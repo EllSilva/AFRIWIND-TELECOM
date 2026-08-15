@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços e Soluções | AFRIWIND TELECOM</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-blue: #0072ce;
+            --brand-cyan: #00aeef;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- CABEÇALHO HERO --- */
+        .hero-services {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 90px 0 70px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge-brand {
+            background: rgba(0, 174, 239, 0.12);
+            color: var(--brand-blue);
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 6px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 15px;
+        }
+
+        .hero-title span {
+            color: var(--brand-blue);
+        }
+
+        /* --- BOTÕES DE FILTRO DE SERVIÇOS --- */
+        .filter-btn {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 22px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--brand-blue);
+            color: #ffffff;
+            border-color: var(--brand-blue);
+            box-shadow: 0 4px 12px rgba(0, 114, 206, 0.25);
+        }
+
+        /* --- CARDS DE SERVIÇOS --- */
+        .service-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 35px 28px;
+            height: 100%;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+            border-color: var(--brand-cyan);
+        }
+
+        .service-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 174, 239, 0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+            color: var(--brand-blue);
+            font-size: 1.6rem;
+        }
+
+        .service-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .service-card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 15px;
+        }
+
+        .service-list li {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-list li i {
+            color: var(--brand-cyan);
+            font-size: 0.75rem;
+        }
+
+        /* --- SEÇÃO DE PRODUTOS --- */
+        .section-products {
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 90px 0;
+        }
+
+        .product-badge-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .product-badge-card:hover {
+            border-color: var(--brand-blue);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .product-badge-icon {
+            color: var(--brand-blue);
+            font-size: 1.25rem;
+        }
+
+        /* --- PORQUE ESCOLHER --- */
+        .section-why {
+            padding: 90px 0;
+        }
+
+        .why-card {
+            padding: 25px;
+            border-left: 4px solid var(--brand-blue);
+            background: var(--bg-light);
+            border-radius: 0 8px 8px 0;
+            height: 100%;
+        }
+
+        .why-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        /* --- CALL TO ACTION (CTA) --- */
+        .cta-banner {
+            background: linear-gradient(135deg, #0072ce 0%, #00aeef 100%);
+            border-radius: 16px;
+            padding: 50px 40px;
+            color: #ffffff;
+        }
+
+        .btn-cta {
+            background-color: #ffffff;
+            color: var(--brand-blue);
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-cta:hover {
+            background-color: #f8fafc;
+            color: #005bb5;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+
+        <!-- CABEÇALHO HERO -->
+        <header class="hero-services text-center">
+            <div class="container">
+                <span class="badge-brand">Soluções de Telecomunicações</span>
+                <h1 class="hero-title">Engenharia de Redes & <span>Conectividade</span></h1>
+                <p class="text-secondary col-lg-8 mx-auto mt-3 fs-5">
+                    Fornecemos infraestrutura tecnológica avançada para residências, condomínios, empresas e órgãos governamentais.
+                </p>
+            </div>
+        </header>
+
+        <!-- SEÇÃO DE SERVIÇOS -->
+        <main class="container py-5">
+
+            <!-- Filtros de Serviços -->
+            <div class="d-flex justify-content-center flex-wrap gap-2 mb-5">
+                <button 
+                    v-for="cat in categorias" 
+                    :key="cat.id" 
+                    class="filter-btn"
+                    :class="{ active: categoriaAtiva === cat.id }"
+                    @click="categoriaAtiva = cat.id">
+                    {{ cat.nome }}
+                </button>
+            </div>
+
+            <!-- Grid dos Serviços -->
+            <div class="row g-4">
+                <div 
+                    class="col-md-6 col-lg-4" 
+                    v-for="servico in servicosFiltrados" 
+                    :key="servico.title">
+                    <div class="service-card">
+                        <div class="service-icon-wrapper">
+                            <i :class="servico.icon"></i>
+                        </div>
+                        <h3 class="service-card-title">{{ servico.title }}</h3>
+                        <p class="service-card-desc">{{ servico.description }}</p>
+                        
+                        <ul v-if="servico.items && servico.items.length" class="service-list">
+                            <li v-for="item in servico.items" :key="item">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>{{ item }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- SEÇÃO DE PRODUTOS EQUIPAMENTOS -->
+        <section class="section-products">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <span class="badge-brand">Catálogo Técnico</span>
+                    <h2 class="fw-bold fs-2 mt-2">Equipamentos & Suprimentos</h2>
+                    <p class="text-secondary">Distribuímos tecnologias das marcas líderes de mercado para o seu projeto.</p>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-6 col-lg-4" v-for="prod in produtos" :key="prod.nome">
+                        <div class="product-badge-card">
+                            <i :class="prod.icon" class="product-badge-icon"></i>
+                            <span class="fw-semibold text-dark fs-6">{{ prod.nome }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORQUE ESCOLHER A AFRIWIND -->
+        <section class="section-why">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-4">
+                        <span class="badge-brand">Diferenciais</span>
+                        <h2 class="fw-bold fs-2 mt-2">Por que escolher a AFRIWIND TELECOM?</h2>
+                        <p class="text-secondary mt-3">Compromisso rigoroso com prazos, conformidade técnica internacional e alta confiabilidade de rede.</p>
+                        <a href="#contacto" class="btn btn-outline-primary rounded-pill px-4 py-2 mt-2 font-weight-medium">Falar com Especialista</a>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="row g-3">
+                            <div class="col-md-6" v-for="razao in razoes" :key="razao.titulo">
+                                <div class="why-card">
+                                    <div class="why-title">{{ razao.titulo }}</div>
+                                    <div class="text-secondary small">{{ razao.desc }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION FINAL -->
+        <div class="container mb-5">
+            <div class="cta-banner text-center text-lg-start d-lg-flex align-items-center justify-content-between">
+                <div class="mb-4 mb-lg-0">
+                    <h3 class="fw-bold fs-2 mb-2">Precisa de um projeto de rede sob medida?</h3>
+                    <p class="mb-0 opacity-90">Nossa equipe técnica realiza a vistoria e elabora a topologia ideal para a sua infraestrutura.</p>
+                </div>
+                <div>
+                    <a href="#" class="btn-cta text-nowrap">Solicitar Proposta</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Vue.js 2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                categoriaAtiva: 'todos',
+                categorias: [
+                    { id: 'todos', nome: 'Todos os Serviços' },
+                    { id: 'conectividade', nome: 'Conectividade' },
+                    { id: 'infraestrutura', nome: 'Infraestrutura' },
+                    { id: 'segurança', nome: 'Segurança & Voz' }
+                ],
+                servicos: [
+                    { 
+                        title: 'Internet por Fibra Óptica (FTTH)', 
+                        categoria: 'conectividade',
+                        icon: 'fa-solid fa-bolt', 
+                        description: 'Acesso ultrarrápido à internet via fibra óptica com ultra baixa latência e alta disponibilidade residencial e corporativa.' 
+                    },
+                    { 
+                        title: 'Projetos de Redes', 
+                        categoria: 'infraestrutura',
+                        icon: 'fa-solid fa-diagram-project', 
+                        description: 'Planejamento e estruturação técnica completa de redes de dados.',
+                        items: ['Redes LAN e WAN', 'Redes Metropolitanas', 'Redes Corporativas', 'Backbone em Fibra Óptica'] 
+                    },
+                    { 
+                        title: 'Redes Wi-Fi Empresariais', 
+                        categoria: 'conectividade',
+                        icon: 'fa-solid fa-wifi', 
+                        description: 'Soluções Wi-Fi gerenciadas para ambientes corporativos com roaming inteligente, hotspot e controle de acesso.',
+                        items: ['Hotéis e Hospitais', 'Escolas e Condomínios', 'Centros Comerciais']
+                    },
+                    { 
+                        title: 'Instalação de Fibra Óptica', 
+                        categoria: 'infraestrutura',
+                        icon: 'fa-solid fa-network-wired', 
+                        description: 'Projetos completos de fusão, certificação e estruturação ótica.',
+                        items: ['Lançamento de Cabos', 'Fusões e Testes OTDR', 'Organização de Bastidores (Racks)'] 
+                    },
+                    { 
+                        title: 'Videovigilância (CCTV)', 
+                        categoria: 'segurança',
+                        icon: 'fa-solid fa-video', 
+                        description: 'Sistemas inteligentes de videovigilância IP para proteção de ativos empresariais e residenciais.',
+                        items: ['Câmeras IP de Alta Definição', 'Gravação Centralizada em NVR', 'Monitoramento Remoto Mobile'] 
+                    },
+                    { 
+                        title: 'Voz sobre IP (VoIP)', 
+                        categoria: 'segurança',
+                        icon: 'fa-solid fa-phone-volume', 
+                        description: 'PABX Virtual e telefonia IP para otimização de custos de comunicação empresarial.' 
+                    },
+                    { 
+                        title: 'Consultoria em Redes', 
+                        categoria: 'infraestrutura',
+                        icon: 'fa-solid fa-user-gear', 
+                        description: 'Análise técnica especializada para ISPs, órgãos públicos e empresas expandirem suas redes com segurança.' 
+                    },
+                    { 
+                        title: 'Suporte Técnico Especializado', 
+                        categoria: 'infraestrutura',
+                        icon: 'fa-solid fa-headset', 
+                        description: 'Atendimento corretivo e preventivo focado em manter o SLA de conectividade dos clientes ativo.' 
+                    }
+                ],
+                produtos: [
+                    { nome: 'Equipamentos de Fibra Óptica', icon: 'fa-solid fa-microchip' },
+                    { nome: 'Sistemas OLT e ONU', icon: 'fa-solid fa-server' },
+                    { nome: 'Routers Profissionais', icon: 'fa-solid fa-router' },
+                    { nome: 'Switches Gerenciáveis', icon: 'fa-solid fa-network-wired' },
+                    { nome: 'Access Points Empresariais', icon: 'fa-solid fa-wifi' },
+                    { nome: 'Sistemas Mesh Wi-Fi', icon: 'fa-solid fa-cubes' },
+                    { nome: 'Racks e Bastidores', icon: 'fa-solid fa-box' },
+                    { nome: 'Patch Panels e Cordoalhas', icon: 'fa-solid fa-align-justify' },
+                    { nome: 'Cabos Cat6 / Fibra', icon: 'fa-solid fa-ethernet' },
+                    { nome: 'Câmeras IP e NVRs', icon: 'fa-solid fa-camera-home' },
+                    { nome: 'Telefones IP Corporativos', icon: 'fa-solid fa-phone' },
+                    { nome: 'Acessórios para Redes', icon: 'fa-solid fa-plug' }
+                ],
+                razoes: [
+                    { titulo: 'Equipe Qualificada', desc: 'Engenheiros e técnicos certificados com vasta experiência técnica de campo.' },
+                    { titulo: 'Projetos Sob Medida', desc: 'Soluções desenhadas exatamente para o tamanho e orçamento de cada cliente.' },
+                    { titulo: 'Equipamentos Homologados', desc: 'Apenas hardware de alta confiabilidade com garantia de fábrica.' },
+                    { titulo: 'Suporte de Rápida Resposta', desc: 'Equipes de plantão para resolução de incidentes e manutenção de SLA.' }
+                ]
+            },
+            computed: {
+                servicosFiltrados() {
+                    if (this.categoriaAtiva === 'todos') {
+                        return this.servicos;
+                    }
+                    return this.servicos.filter(s => s.categoria === this.categoriaAtiva);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

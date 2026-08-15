@@ -1,0 +1,164 @@
+  <div >
+    <!-- Hero Banner -->
+    <header class="hero-banner">
+      <div class="container position-relative" data-aos="fade-down" data-aos-duration="1000">
+        <div class="subtitle">{{ banner.subtitulo }}</div>
+        <h1 class="text-uppercase display-4 fw-bold">{{ banner.titulo }}</h1>
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container my-5 py-3">
+      
+      <!-- Seção Os Nossos Serviços -->
+      <section class="mb-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="section-title">Soluções Especializadas</h2>
+          <p class="text-muted col-lg-8 mx-auto mt-2">Tecnologia de ponta, infraestrutura robusta e serviços personalizados para atender clientes residenciais, empresariais e institucionais.</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Fibra Óptica (FTTH) -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-router"></i>
+              </div>
+              <h3>Internet por Fibra Óptica (FTTH)</h3>
+              <p>Fornecemos acesso à Internet através de fibra óptica, garantindo elevada velocidade, baixa latência e alta disponibilidade para residências, empresas e condomínios.</p>
+            </div>
+          </div>
+
+          <!-- Projetos de Redes -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-diagram-3"></i>
+              </div>
+              <h3>Projetos de Redes</h3>
+              <p>Planeamento, implementação e manutenção de infraestruturas de redes de dados, incluindo:</p>
+              <ul class="service-list mt-auto">
+                <li v-for="item in servicosRede" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Redes Wi-Fi Empresariais -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-wifi"></i>
+              </div>
+              <h3>Redes Wi-Fi Empresariais</h3>
+              <p>Desenvolvimento de soluções Wi-Fi de alto desempenho com cobertura otimizada, roaming inteligente, gestão centralizada e elevado nível de segurança para:</p>
+              <div class="mt-auto pt-2">
+                <span class="tag-badge" v-for="local in locaisWifi" :key="local">{{ local }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instalação de Fibra Óptica -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-tools"></i>
+              </div>
+              <h3>Instalação de Fibra Óptica</h3>
+              <p>Executamos projetos completos de fibra óptica com elevada precisão e rigor técnico:</p>
+              <ul class="service-list mt-auto">
+                <li v-for="item in instalacaoFibra" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Videovigilância (CCTV) -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-camera-video"></i>
+              </div>
+              <h3>Videovigilância (CCTV)</h3>
+              <p>Projetamos e implementamos sistemas modernos de videovigilância para proteção de património, empresas e residências:</p>
+              <ul class="service-list mt-auto">
+                <li v-for="item in cctv" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Voz sobre IP (VoIP) -->
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-telephone-inbound"></i>
+              </div>
+              <h3>Voz sobre IP (VoIP)</h3>
+              <p>Implementação de soluções de telefonia IP para empresas, proporcionando comunicações eficientes e redução significativa dos custos operacionais.</p>
+            </div>
+          </div>
+
+          <!-- Consultoria em Redes -->
+          <div class="col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-briefcase"></i>
+              </div>
+              <h3>Consultoria em Redes</h3>
+              <p>Prestamos consultoria especializada para ISPs, empresas e organismos públicos visando otimização de recursos, escalabilidade e conformidade com os padrões do setor.</p>
+            </div>
+          </div>
+
+          <!-- Suporte Técnico -->
+          <div class="col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-headset"></i>
+              </div>
+              <h3>Suporte Técnico</h3>
+              <p>Disponibilizamos assistência técnica especializada contínua para diagnóstico, manutenção preventiva, corretiva e otimização de infraestruturas tecnológicas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Os Nossos Produtos -->
+      <section class="mb-5 py-4">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="section-title">Os Nossos Produtos</h2>
+          <p class="text-muted col-lg-8 mx-auto mt-2">Disponibilizamos equipamentos e soluções das principais marcas do mercado para infraestruturas modernas.</p>
+        </div>
+
+        <div class="row g-3">
+          <div v-for="(produto, index) in produtos" :key="produto.nome" class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" :data-aos-delay="index * 50">
+            <div class="product-card">
+              <i :class="'bi ' + produto.icone"></i>
+              <h5>{{ produto.nome }}</h5>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Porque Escolher a AFRIWIND TELECOM -->
+      <section class="my-5" data-aos="fade-up" data-aos-duration="1000">
+        <div class="why-us-section">
+          <div class="row align-items-center">
+            <div class="col-lg-5 mb-4 mb-lg-0">
+              <span class="badge bg-light text-dark mb-2 font-monospace px-3 py-2 text-uppercase fw-bold">Diferenciais</span>
+              <h2 class="text-white fw-bold display-6 mb-3">Porque Escolher a AFRIWIND TELECOM?</h2>
+              <p class="text-white-50">Compromisso total com a qualidade, estabilidade e inovação para impulsionar a sua conectividade.</p>
+            </div>
+            <div class="col-lg-7">
+              <div class="row">
+                <div v-for="(razao, index) in motivos" :key="index" class="col-md-6" data-aos="fade-left" :data-aos-delay="index * 100">
+                  <div class="why-us-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <p>{{ razao }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>

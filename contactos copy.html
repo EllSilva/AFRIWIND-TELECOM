@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Os Nossos Serviços - AFRIWIND TELECOM</title>
+  
+  <!-- Google Fonts (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <style>
+    /* Cores Globais e Padrões da AFRIWIND */
+    :root {
+      --primary-color: #0b3c48;
+      --primary-hover: #072a33;
+      --accent-color: #00a896;
+      --text-main: #2b2d42;
+      --text-muted: #6c757d;
+      --bg-light: #f8f9fa;
+      --card-bg: #ffffff;
+      --border-color: #e9ecef;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      background-color: #fafafa;
+    }
+
+    /* Animação suave de entrada */
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      position: relative;
+      background: linear-gradient(135deg, rgba(11, 60, 72, 0.92), rgba(7, 42, 51, 0.85)), 
+                  url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      color: #fff;
+      padding: 100px 0 80px;
+      text-align: center;
+      border-bottom: 4px solid var(--accent-color);
+    }
+
+    .hero-banner .subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-banner h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    /* Títulos Principais com Linha Decorativa */
+    .section-title {
+      color: var(--primary-color);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 40px;
+      height: 3px;
+      background-color: var(--accent-color);
+      border-radius: 2px;
+    }
+
+    .text-center .section-title::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Cartões de Serviços */
+    .service-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 30px;
+      height: 100%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(11, 60, 72, 0.08);
+      border-color: rgba(0, 168, 150, 0.3);
+    }
+
+    .service-card .icon-box {
+      width: 56px;
+      height: 56px;
+      background-color: rgba(11, 60, 72, 0.06);
+      color: var(--primary-color);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover .icon-box {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    .service-card h3 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary-color);
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .service-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 15px;
+      margin-bottom: 0;
+    }
+
+    .service-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .service-list li::before {
+      content: "\F26E";
+      font-family: "bootstrap-icons";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    /* Tags em Grid (Wi-Fi / Soluções) */
+    .tag-badge {
+      display: inline-block;
+      background-color: rgba(11, 60, 72, 0.05);
+      color: var(--primary-color);
+      border: 1px solid rgba(11, 60, 72, 0.1);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-right: 6px;
+      margin-bottom: 8px;
+    }
+
+    /* Cards de Produtos */
+    .product-card {
+      background-color: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .product-card i {
+      font-size: 2rem;
+      color: var(--accent-color);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .product-card h5 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0;
+    }
+
+    /* Seção Porque Escolher */
+    .why-us-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+      color: #fff;
+      border-radius: 16px;
+      padding: 50px 30px;
+      box-shadow: 0 10px 30px rgba(11, 60, 72, 0.15);
+    }
+
+    .why-us-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .why-us-item i {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+      margin-right: 15px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .why-us-item p {
+      margin-bottom: 0;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app" class="fade-in">
+    <!-- Hero Banner -->
+    <header class="hero-banner">
+      <div class="container">
+        <div class="subtitle">{{ banner.subtitulo }}</div>
+        <h1 class="text-uppercase">{{ banner.titulo }}</h1>
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container my-5 py-3">
+      
+      <!-- Seção Os Nossos Serviços -->
+      <section class="mb-5">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Soluções Especializadas</h2>
+          <p class="text-muted col-lg-8 mx-auto mt-2">Tecnologia de ponta, infraestrutura robusta e serviços personalizados para atender clientes residenciais, empresariais e institucionais.</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Fibra Óptica (FTTH) -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-router"></i>
+              </div>
+              <h3>Internet por Fibra Óptica (FTTH)</h3>
+              <p>Fornecemos acesso à Internet através de fibra óptica, garantindo elevada velocidade, baixa latência e alta disponibilidade para residências, empresas e condomínios.</p>
+            </div>
+          </div>
+
+          <!-- Projetos de Redes -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-diagram-3"></i>
+              </div>
+              <h3>Projetos de Redes</h3>
+              <p>Planeamento, implementação e manutenção de infraestruturas de redes de dados, incluindo:</p>
+              <ul class="service-list mt-auto">
+                <li v-for="item in servicosRede" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Redes Wi-Fi Empresariais -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-wifi"></i>
+              </div>
+              <h3>Redes Wi-Fi Empresariais</h3>
+              <p>Desenvolvimento de soluções Wi-Fi de alto desempenho com cobertura otimizada, roaming inteligente, gestão centralizada e elevado nível de segurança para:</p>
+              <div class="mt-auto pt-2">
+                <span class="tag-badge" v-for="local in locaisWifi" :key="local">{{ local }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instalação de Fibra Óptica -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-tools"></i>
+              </div>
+              <h3>Instalação de Fibra Óptica</h3>
+              <p>Executamos projetos completos de fibra óptica com elevada precisão e rigor técnico:</p>
+              <ul class="service-list mt-auto">
+                <li v-for="item in instalacaoFibra" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Videovigilância (CCTV) -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-camera-video"></i>
+              </div>
+              <h3>Videovigilância (CCTV)</h3>
+              <p>Projetamos e implementamos sistemas modernos de videovigilância para proteção de património, empresas e residências:</p>
+              <ul class="service-list mt-auto">
+                <li v-for="item in cctv" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Voz sobre IP (VoIP) -->
+          <div class="col-md-6 col-lg-4">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-telephone-inbound"></i>
+              </div>
+              <h3>Voz sobre IP (VoIP)</h3>
+              <p>Implementação de soluções de telefonia IP para empresas, proporcionando comunicações eficientes e redução significativa dos custos operacionais.</p>
+            </div>
+          </div>
+
+          <!-- Consultoria em Redes -->
+          <div class="col-md-6 col-lg-6">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-briefcase"></i>
+              </div>
+              <h3>Consultoria em Redes</h3>
+              <p>Prestamos consultoria especializada para ISPs, empresas e organismos públicos visando otimização de recursos, escalabilidade e conformidade com os padrões do setor.</p>
+            </div>
+          </div>
+
+          <!-- Suporte Técnico -->
+          <div class="col-md-6 col-lg-6">
+            <div class="service-card">
+              <div class="icon-box">
+                <i class="bi bi-headset"></i>
+              </div>
+              <h3>Suporte Técnico</h3>
+              <p>Disponibilizamos assistência técnica especializada contínua para diagnóstico, manutenção preventiva, corretiva e otimização de infraestruturas tecnológicas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Os Nossos Produtos -->
+      <section class="mb-5 py-4">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Os Nossos Produtos</h2>
+          <p class="text-muted col-lg-8 mx-auto mt-2">Disponibilizamos equipamentos e soluções das principais marcas do mercado para infraestruturas modernas.</p>
+        </div>
+
+        <div class="row g-3">
+          <div v-for="produto in produtos" :key="produto.nome" class="col-6 col-md-4 col-lg-3">
+            <div class="product-card">
+              <i :class="'bi ' + produto.icone"></i>
+              <h5>{{ produto.nome }}</h5>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Porque Escolher a AFRIWIND TELECOM -->
+      <section class="my-5">
+        <div class="why-us-section">
+          <div class="row align-items-center">
+            <div class="col-lg-5 mb-4 mb-lg-0">
+              <span class="badge bg-light text-dark mb-2 font-monospace px-3 py-2 text-uppercase fw-bold">Diferenciais</span>
+              <h2 class="text-white fw-bold display-6 mb-3">Porque Escolher a AFRIWIND TELECOM?</h2>
+              <p class="text-white-50">Compromisso total com a qualidade, estabilidade e inovação para impulsionar a sua conectividade.</p>
+            </div>
+            <div class="col-lg-7">
+              <div class="row">
+                <div v-for="(razao, index) in motivos" :key="index" class="col-md-6">
+                  <div class="why-us-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <p>{{ razao }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Vue.js 2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <!-- Bootstrap 5 JS Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
+
+  <!-- Script Vue.js -->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        banner: {
+          subtitulo: 'TECNOLOGIA & CONECTIVIDADE',
+          titulo: 'OS NOSSOS SERVIÇOS'
+        },
+        servicosRede: [
+          'Redes LAN',
+          'Redes WAN',
+          'Redes Metropolitanas',
+          'Redes Corporativas',
+          'Backbone em Fibra Óptica'
+        ],
+        locaisWifi: [
+          'Empresas',
+          'Condomínios',
+          'Hotéis',
+          'Hospitais',
+          'Escolas',
+          'Centros Comerciais'
+        ],
+        instalacaoFibra: [
+          'Lançamento de cabos',
+          'Fusões',
+          'Certificação',
+          'Instalação de ODF',
+          'Organização de bastidores',
+          'Testes e documentação'
+        ],
+        cctv: [
+          'Instalação de câmaras IP',
+          'Gravação em NVR',
+          'Monitorização remota',
+          'Manutenção preventiva'
+        ],
+        produtos: [
+          { nome: 'Equipamentos de Fibra Óptica', icone: 'bi-plugin' },
+          { nome: 'OLT e ONU', icone: 'bi-cpu' },
+          { nome: 'Routers', icone: 'bi-router' },
+          { nome: 'Switches', icone: 'bi-hdd-network' },
+          { nome: 'Access Points Empresariais', icone: 'bi-wifi' },
+          { nome: 'Sistemas Mesh Wi-Fi', icone: 'bi-bounding-box-circles' },
+          { nome: 'Bastidores (Racks)', icone: 'bi-stack' },
+          { nome: 'Patch Panels', icone: 'bi-grid-3x3-gap' },
+          { nome: 'Cabos de Rede', icone: 'bi-ethernet' },
+          { nome: 'Equipamentos de Videovigilância', icone: 'bi-camera-video' },
+          { nome: 'Telefones IP', icone: 'bi-telephone' },
+          { nome: 'Equipamentos Redes Corporativas', icone: 'bi-server' }
+        ],
+        motivos: [
+          'Equipa técnica altamente qualificada.',
+          'Soluções personalizadas para cada cliente.',
+          'Equipamentos de elevada qualidade.',
+          'Atendimento rápido e profissional.',
+          'Suporte técnico especializado.',
+          'Projetos desenvolvidos de acordo com as melhores práticas do setor.',
+          'Compromisso com a inovação e a satisfação dos clientes.'
+        ]
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+  <div  class="fade-in">
+    <!-- Hero Banner -->
+    <header class="hero-banner">
+      <div class="container">
+        <div class="subtitle">{{ banner.subtitulo }}</div>
+        <h1 class="text-uppercase">{{ banner.titulo }}</h1>
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container my-5 py-4">
+      
+      <!-- Seção Sobre Nós -->
+      <section class="row gy-5 mb-5 align-items-center">
+        <!-- Sobre Nós (Esquerda) -->
+        <div class="col-lg-7 pe-lg-5 about-text">
+          <h2 class="section-title text-uppercase">Sobre a {{ empresa.nome }}</h2>
+          <p v-for="(p, index) in empresa.descricao" :key="index">
+            {{ p }}
+          </p>
+        </div>
+
+        <!-- Destaque / Apresentação (Direita) -->
+        <div class="col-lg-5">
+          <div class="highlight-card">
+            <span class="badge-year">Desde {{ empresa.anoFundacao }}</span>
+            <h3>Conectividade & Inovação</h3>
+            <p>Trabalhamos diariamente para entregar inovação, estabilidade e excelência em cada projeto de telecomunicações e tecnologias de informação.</p>
+            <div class="d-flex align-items-center mt-4">
+              <i class="bi bi-wifi display-5 text-warning me-3"></i>
+              <div>
+                <strong class="d-block text-white fs-5">Alta Qualidade</strong>
+                <small class="text-white-50">Soluções para residências, empresas e instituições</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Missão e Visão -->
+      <section class="row g-4 mb-5">
+        <div class="col-md-6">
+          <div class="custom-card">
+            <div class="icon-box">
+              <i class="bi bi-rocket-takeoff"></i>
+            </div>
+            <h3>Missão</h3>
+            <p>{{ missao }}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="custom-card">
+            <div class="icon-box">
+              <i class="bi bi-eye"></i>
+            </div>
+            <h3>Visão</h3>
+            <p>{{ visao }}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Valores -->
+      <section class="mb-5">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Nossos Valores</h2>
+        </div>
+        <div class="row g-4">
+          <div v-for="valor in valores" :key="valor.titulo" class="col-sm-6 col-lg-3">
+            <div class="custom-card text-center">
+              <div class="icon-box mx-auto">
+                <i :class="'bi ' + valor.icone"></i>
+              </div>
+              <h4>{{ valor.titulo }}</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>

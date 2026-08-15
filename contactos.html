@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rodapé - AFRIWIND TELECOM</title>
+  
+  <!-- Google Fonts (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <style>
+    /* Cores Globais da AFRIWIND */
+    :root {
+      --primary-color: #0b3c48;
+      --primary-dark: #06232b;
+      --accent-color: #00a896;
+      --accent-hover: #02c39a;
+      --text-muted: #a0aec0;
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: #f4f6f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    /* Estilos Principais do Rodapé */
+    .site-footer {
+      background-color: var(--primary-dark);
+      color: #ffffff;
+      padding-top: 70px;
+      padding-bottom: 25px;
+      font-size: 0.95rem;
+      position: relative;
+      border-top: 4px solid var(--accent-color);
+    }
+
+    .footer-brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .footer-brand span {
+      color: var(--accent-color);
+    }
+
+    .footer-text {
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    .footer-title {
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 30px;
+      height: 2px;
+      background-color: var(--accent-color);
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-color);
+      transform: translateX(5px);
+    }
+
+    .contact-info-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    .contact-info-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .contact-info-list i {
+      color: var(--accent-color);
+      font-size: 1.1rem;
+      margin-right: 12px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* Redes Sociais */
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .social-btn:hover {
+      background-color: var(--accent-color);
+      color: #ffffff;
+      transform: translateY(-4px);
+      box-shadow: 0 5px 15px rgba(0, 168, 150, 0.3);
+      border-color: var(--accent-color);
+    }
+
+    /* Linha Divisória e Bottom Footer */
+    .footer-divider {
+      border-top: 1px solid var(--border-color);
+      margin-top: 50px;
+      margin-bottom: 25px;
+    }
+
+    .copyright {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-bottom-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-left: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--accent-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== RODAPÉ INÍCIO ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Coluna 1: Sobre a Empresa -->
+        <div class="col-lg-4 col-md-6">
+          <a href="#" class="footer-brand">AFRIWIND <span>TELECOM</span></a>
+          <p class="footer-text">
+            Fornecemos soluções integradas em telecomunicações, redes de fibra óptica e infraestrutura tecnológica de alta performance para impulsionar a sua conectividade em Angola.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Links Rápidos -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Empresa</h5>
+          <ul class="footer-links">
+            <li><a href="#">Sobre Nós</a></li>
+            <li><a href="#">Os Nossos Serviços</a></li>
+            <li><a href="#">Produtos</a></li>
+            <li><a href="#">Projetos</a></li>
+            <li><a href="#">Contactos</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Serviços -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Serviços</h5>
+          <ul class="footer-links">
+            <li><a href="#">Internet Fibra Óptica (FTTH)</a></li>
+            <li><a href="#">Projetos & Redes Corporativas</a></li>
+            <li><a href="#">Wi-Fi Empresarial</a></li>
+            <li><a href="#">Videovigilância (CCTV)</a></li>
+            <li><a href="#">Telefonia Voz sobre IP (VoIP)</a></li>
+            <li><a href="#">Consultoria e Suporte Técnico</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 4: Contactos -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Contactos</h5>
+          <ul class="contact-info-list">
+            <li>
+              <i class="bi bi-geo-alt"></i>
+              <span>Luanda, Angola</span>
+            </li>
+            <li>
+              <i class="bi bi-telephone"></i>
+              <span>+244 9XX XXX XXX<br>+244 2XX XXX XXX</span>
+            </li>
+            <li>
+              <i class="bi bi-envelope"></i>
+              <span>geral@afriwindtelecom.co.ao</span>
+            </li>
+            <li>
+              <i class="bi bi-clock"></i>
+              <span>Seg - Sex: 08:00h às 17:00h</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Divisória -->
+      <div class="footer-divider"></div>
+
+      <!-- Direitos de Autor e Termos -->
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="copyright mb-0">
+            &copy; 2026 <strong>AFRIWIND TELECOM</strong>. Todos os direitos reservados.
+          </p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <div class="footer-bottom-links">
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos de Serviço</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+  <!-- ==================== RODAPÉ FIM ==================== -->
+
+  <!-- Bootstrap 5 JS Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
+</body>
+</html>

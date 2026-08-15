@@ -1,0 +1,393 @@
+<div class="bg_solicitacao">
+ 
+  <div class="container">
+    <div class="row align-items-center p-3 p-md-4 ">
+      
+      <!-- Lado Esquerdo: Apresentação -->
+      <div class="col-lg-4 text-white pe-lg-4 mb-4 mb-lg-0 text-center text-lg-start solicita_dir">
+        <div class="d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-3">
+          <i class="bi bi-house-heart-fill fs-2 me-2 text-info"></i>
+          <span class="brand-title">Patrimónios & Lar</span>
+        </div>
+        <h1 class="hero-heading mb-2 mb-lg-3">ANGARIAÇÃO DE IMÓVEIS</h1>
+        <p class="lead opacity-80 fw-light fs-6 mb-0">
+          Registe o seu imóvel para venda ou arrendamento em 5 passos rápidos.
+        </p>
+      </div>
+
+      <!-- Lado Direito: Formulário Glassmorphism -->
+      <div class="col-lg-8 col-12 px-1 px-sm-3 solicita_esq">
+        <div class="glass-card">
+          
+          <!-- Stepper Header -->
+          <div class="steps-container">
+            <div class="step-item" :class="{ active: currentStep === 1, completed: currentStep > 1 }">
+              <div class="step-dot">
+                <i v-if="currentStep > 1" class="bi bi-check-lg"></i>
+                <span v-else>1</span>
+              </div>
+              <span class="step-label">Proprietário</span>
+            </div>
+            
+            <div class="step-item" :class="{ active: currentStep === 2, completed: currentStep > 2 }">
+              <div class="step-dot">
+                <i v-if="currentStep > 2" class="bi bi-check-lg"></i>
+                <span v-else>2</span>
+              </div>
+              <span class="step-label">Localização</span>
+            </div>
+
+            <div class="step-item" :class="{ active: currentStep === 3, completed: currentStep > 3 }">
+              <div class="step-dot">
+                <i v-if="currentStep > 3" class="bi bi-check-lg"></i>
+                <span v-else>3</span>
+              </div>
+              <span class="step-label">Atributos</span>
+            </div>
+
+            <div class="step-item" :class="{ active: currentStep === 4, completed: currentStep > 4 }">
+              <div class="step-dot">
+                <i v-if="currentStep > 4" class="bi bi-check-lg"></i>
+                <span v-else>4</span>
+              </div>
+              <span class="step-label">Docs & Mídia</span>
+            </div>
+
+            <div class="step-item" :class="{ active: currentStep === 5 }">
+              <div class="step-dot">5</div>
+              <span class="step-label">Finalizar</span>
+            </div>
+          </div>
+
+          <form @submit.prevent="handleSubmit">
+            <transition name="slide-fade" mode="out-in">
+
+              <!-- PASSO 1: DADOS DO PROPRIETÁRIO -->
+              <div v-if="currentStep === 1" key="step1">
+                <h5 class="mb-3 fw-bold text-center fs-6 fs-sm-5">1. Dados do Proprietário</h5>
+                
+                <div class="row g-2">
+                  <div class="col-12 col-md-6 mb-2">
+                    <label class="form-label">Nome Completo *</label>
+                    <input type="text" v-model="form.proprietario.nome" class="form-control" placeholder="Seu nome completo" required>
+                  </div>
+                  <div class="col-12 col-md-6 mb-2">
+                    <label class="form-label">Telefone / WhatsApp *</label>
+                    <input type="tel" v-model="form.proprietario.telefone" class="form-control" placeholder="+244 9xx xxx xxx" required>
+                  </div>
+                </div>
+
+                <div class="row g-2">
+                  <div class="col-12 col-md-6 mb-2">
+                    <label class="form-label">E-mail *</label>
+                    <input type="email" v-model="form.proprietario.email" class="form-control" placeholder="seuemail@exemplo.com" required>
+                  </div>
+                  <div class="col-12 col-md-6 mb-2">
+                    <label class="form-label">Número do BI ou NIF (Opcional)</label>
+                    <input type="text" v-model="form.proprietario.documentoId" class="form-control" placeholder="Número do BI ou NIF">
+                  </div>
+                </div>
+
+                <div class="row g-2">
+                  <div class="col-6 col-md-4 mb-2">
+                    <label class="form-label">Província *</label>
+                    <input type="text" v-model="form.proprietario.provincia" class="form-control" placeholder="Ex: Luanda" required>
+                  </div>
+                  <div class="col-6 col-md-4 mb-2">
+                    <label class="form-label">Município *</label>
+                    <input type="text" v-model="form.proprietario.municipio" class="form-control" placeholder="Ex: Belas" required>
+                  </div>
+                  <div class="col-12 col-md-4 mb-2">
+                    <label class="form-label">Endereço Residencial</label>
+                    <input type="text" v-model="form.proprietario.endereco" class="form-control" placeholder="Rua, Bairro...">
+                  </div>
+                </div>
+
+                <button type="button" @click="nextStep" class="btn btn-custom-primary w-100 mt-3">
+                  Próximo: Localização & Tipo <i class="bi bi-arrow-right ms-1"></i>
+                </button>
+              </div>
+
+              <!-- PASSO 2: LOCALIZAÇÃO E TIPO DO IMÓVEL -->
+              <div v-if="currentStep === 2" key="step2">
+                <h5 class="mb-3 fw-bold text-center fs-6 fs-sm-5">2. Localização e Tipo de Imóvel</h5>
+
+                <div class="row g-2">
+                  <div class="col-6 col-md-4 mb-2">
+                    <label class="form-label">Finalidade *</label>
+                    <select v-model="form.imovel.finalidade" class="form-select" required>
+                      <option value="Venda">Venda</option>
+                      <option value="Arrendamento">Arrendamento</option>
+                    </select>
+                  </div>
+                  <div class="col-6 col-md-4 mb-2">
+                    <label class="form-label">Tipo de Imóvel *</label>
+                    <select v-model="form.imovel.tipoImovel" class="form-select" required>
+                      <option value="Apartamento">Apartamento</option>
+                      <option value="Vivenda">Vivenda</option>
+                      <option value="Terreno">Terreno</option>
+                      <option value="Loja">Loja</option>
+                      <option value="Escritório">Escritório</option>
+                      <option value="Armazém">Armazém</option>
+                      <option value="Prédio">Prédio</option>
+                      <option value="Quinta">Quinta</option>
+                    </select>
+                  </div>
+                  <div class="col-12 col-md-4 mb-2">
+                    <label class="form-label">Preço Pretendido (Kz) *</label>
+                    <input type="number" v-model="form.imovel.preco" class="form-control" placeholder="Ex: 45000000" required>
+                  </div>
+                </div>
+
+                <div class="row g-2">
+                  <div class="col-6 col-md-4 mb-2">
+                    <label class="form-label">Província *</label>
+                    <input type="text" v-model="form.imovel.provincia" class="form-control" required>
+                  </div>
+                  <div class="col-6 col-md-4 mb-2">
+                    <label class="form-label">Município *</label>
+                    <input type="text" v-model="form.imovel.municipio" class="form-control" required>
+                  </div>
+                  <div class="col-12 col-md-4 mb-2">
+                    <label class="form-label">Zona / Bairro *</label>
+                    <input type="text" v-model="form.imovel.zona" class="form-control" placeholder="Ex: Talatona" required>
+                  </div>
+                </div>
+
+                <div class="row g-2">
+                  <div class="col-12 col-md-8 mb-2">
+                    <label class="form-label">Endereço Completo</label>
+                    <input type="text" v-model="form.imovel.enderecoCompleto" class="form-control" placeholder="Rua, Número, Referência">
+                  </div>
+                  <div class="col-12 col-md-4 mb-2">
+                    <label class="form-label">Link do Mapa (Google Maps)</label>
+                    <input type="url" v-model="form.imovel.localizacaoMapa" class="form-control" placeholder="https://maps.google.com/...">
+                  </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-3">
+                  <button type="button" @click="prevStep" class="btn btn-custom-secondary w-50">
+                    <i class="bi bi-arrow-left me-1"></i> Voltar
+                  </button>
+                  <button type="button" @click="nextStep" class="btn btn-custom-primary w-50">
+                    Próximo <i class="bi bi-arrow-right ms-1"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- PASSO 3: CARACTERÍSTICAS DO IMÓVEL -->
+              <div v-if="currentStep === 3" key="step3">
+                <h5 class="mb-3 fw-bold text-center fs-6 fs-sm-5">3. Características do Imóvel</h5>
+
+                <div class="row g-2">
+                  <div class="col-6 col-md-4 mb-2">
+                    <label class="form-label">Área (m²)</label>
+                    <input type="number" v-model="form.caracteristicas.area" class="form-control" placeholder="Ex: 300">
+                  </div>
+                  <div class="col-6 col-md-4 mb-2">
+                    <label class="form-label">Estado</label>
+                    <select v-model="form.caracteristicas.estado" class="form-select">
+                      <option value="Novo">Novo</option>
+                      <option value="Usado">Usado</option>
+                      <option value="Em construção">Em construção</option>
+                    </select>
+                  </div>
+                  <div class="col-12 col-md-4 mb-2">
+                    <label class="form-label">Ano de Construção</label>
+                    <input type="number" v-model="form.caracteristicas.anoConstrucao" class="form-control" placeholder="Ex: 2021">
+                  </div>
+                </div>
+
+                <!-- Grid adaptada para mobile em 2 colunas -->
+                <div class="row g-2">
+                  <div class="col-4 col-md-2 mb-2">
+                    <label class="form-label">Quartos</label>
+                    <input type="number" v-model="form.caracteristicas.quartos" class="form-control" min="0">
+                  </div>
+                  <div class="col-4 col-md-2 mb-2">
+                    <label class="form-label">Suítes</label>
+                    <input type="number" v-model="form.caracteristicas.suites" class="form-control" min="0">
+                  </div>
+                  <div class="col-4 col-md-2 mb-2">
+                    <label class="form-label">WCs</label>
+                    <input type="number" v-model="form.caracteristicas.banheiros" class="form-control" min="0">
+                  </div>
+                  <div class="col-4 col-md-2 mb-2">
+                    <label class="form-label">Salas</label>
+                    <input type="number" v-model="form.caracteristicas.salas" class="form-control" min="0">
+                  </div>
+                  <div class="col-4 col-md-2 mb-2">
+                    <label class="form-label">Cozinhas</label>
+                    <input type="number" v-model="form.caracteristicas.cozinha" class="form-control" min="0">
+                  </div>
+                  <div class="col-4 col-md-2 mb-2">
+                    <label class="form-label">Vagas</label>
+                    <input type="number" v-model="form.caracteristicas.garagem" class="form-control" min="0">
+                  </div>
+                </div>
+
+                <div class="my-2">
+                  <label class="form-label d-block">Comodidades Extras</label>
+                  <div class="d-flex flex-wrap gap-3 mt-1">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" v-model="form.caracteristicas.piscina" id="piscina">
+                      <label class="form-check-label text-white fs-7 ms-1" for="piscina">Piscina</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" v-model="form.caracteristicas.jardim" id="jardim">
+                      <label class="form-check-label text-white fs-7 ms-1" for="jardim">Jardim</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" v-model="form.caracteristicas.anexos" id="anexos">
+                      <label class="form-check-label text-white fs-7 ms-1" for="anexos">Anexos</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-3">
+                  <button type="button" @click="prevStep" class="btn btn-custom-secondary w-50">
+                    <i class="bi bi-arrow-left me-1"></i> Voltar
+                  </button>
+                  <button type="button" @click="nextStep" class="btn btn-custom-primary w-50">
+                    Próximo <i class="bi bi-arrow-right ms-1"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- PASSO 4: DOCUMENTAÇÃO E MÍDIA -->
+              <div v-if="currentStep === 4" key="step4">
+                <h5 class="mb-3 fw-bold text-center fs-6 fs-sm-5">4. Documentação e Mídia</h5>
+
+                <label class="form-label fw-semibold mb-2 text-info">Documentação Disponível:</label>
+                <div class="row g-2 mb-2">
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" v-model="form.documentos.direitoSuperficie" id="doc1">
+                      <label class="form-check-label text-white fs-7 ms-1" for="doc1">Direito de Superfície</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" v-model="form.documentos.escrituraPublica" id="doc2">
+                      <label class="form-check-label text-white fs-7 ms-1" for="doc2">Escritura Pública</label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" v-model="form.documentos.certidaoPredial" id="doc3">
+                      <label class="form-check-label text-white fs-7 ms-1" for="doc3">Certidão Predial</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" v-model="form.documentos.plantaImovel" id="doc4">
+                      <label class="form-check-label text-white fs-7 ms-1" for="doc4">Planta do Imóvel</label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-4">
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" v-model="form.documentos.licencaUtilizacao" id="doc5">
+                      <label class="form-check-label text-white fs-7 ms-1" for="doc5">Licença de Utilização</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row g-2">
+                  <div class="col-12 col-md-6 mb-2">
+                    <label class="form-label">Fotos do Imóvel (Arquivos)</label>
+                    <input type="file" @change="handleFileUpload" class="form-control" multiple accept="image/*">
+                    <small class="text-white-50 d-block mt-1" v-if="form.midia.fotosNomes.length > 0">
+                      {{ form.midia.fotosNomes.length }} foto(s) selecionada(s)
+                    </small>
+                  </div>
+                  <div class="col-12 col-md-6 mb-2">
+                    <label class="form-label">Link do Vídeo (Opcional)</label>
+                    <input type="url" v-model="form.midia.linkVideo" class="form-control" placeholder="YouTube, Drive, Vimeo...">
+                  </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-3">
+                  <button type="button" @click="prevStep" class="btn btn-custom-secondary w-50">
+                    <i class="bi bi-arrow-left me-1"></i> Voltar
+                  </button>
+                  <button type="button" @click="nextStep" class="btn btn-custom-primary w-50">
+                    Próximo <i class="bi bi-arrow-right ms-1"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- PASSO 5: CONDIÇÕES COMERCIAIS, REVISÃO E DECLARAÇÃO -->
+              <div v-if="currentStep === 5" key="step5">
+                <h5 class="mb-3 fw-bold text-center fs-6 fs-sm-5">5. Condições & Finalização</h5>
+
+                <div class="row g-2 mb-2">
+                  <div class="col-6 col-md-3">
+                    <label class="form-label fs-8">Disponível Imediato?</label>
+                    <select v-model="form.comercial.disponivelImediato" class="form-select">
+                      <option value="Sim">Sim</option>
+                      <option value="Não">Não</option>
+                    </select>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <label class="form-label fs-8">Financiamento?</label>
+                    <select v-model="form.comercial.aceitaFinanciamento" class="form-select">
+                      <option value="Sim">Sim</option>
+                      <option value="Não">Não</option>
+                    </select>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <label class="form-label fs-8">Negociável?</label>
+                    <select v-model="form.comercial.precoNegociavel" class="form-select">
+                      <option value="Sim">Sim</option>
+                      <option value="Não">Não</option>
+                    </select>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <label class="form-label fs-8">Exclusividade?</label>
+                    <select v-model="form.comercial.temExclusividade" class="form-select">
+                      <option value="Não">Não</option>
+                      <option value="Sim">Sim</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Data disponível para visitas</label>
+                  <input type="date" v-model="form.comercial.dataVisita" class="form-control">
+                </div>
+
+                <!-- Resumo dos Dados -->
+                <div class="summary-box mb-3">
+                  <div class="summary-section-title">Proprietário</div>
+                  <p class="mb-1 fs-7 text-break">{{ form.proprietario.nome || 'Não preenchido' }} | WhatsApp: {{ form.proprietario.telefone }}</p>
+
+                  <div class="summary-section-title">Imóvel</div>
+                  <p class="mb-1 fs-7">{{ form.imovel.finalidade }} de {{ form.imovel.tipoImovel }} em {{ form.imovel.zona }} ({{ form.imovel.municipio }}) - {{ form.imovel.preco }} Kz</p>
+
+                  <div class="summary-section-title">Mídia & Agendamento</div>
+                  <p class="mb-1 fs-7">Fotos: {{ form.midia.fotosNomes.length }} arquivo(s) | Visita: {{ form.comercial.dataVisita || 'Não definida' }}</p>
+                </div>
+
+                <!-- Termo de Declaração -->
+                <div class="form-check p-2 p-sm-3 rounded bg-dark bg-opacity-50 border border-secondary mb-3">
+                  <input class="form-check-input ms-0 me-2" type="checkbox" v-model="form.declaracao" id="declaracaoTermo" required>
+                  <label class="form-check-label text-white fs-7" for="declaracaoTermo">
+                    Declaro que as informações prestadas são verdadeiras e autorizo a <strong>Patrimónios & Lar</strong> a divulgar este imóvel. *
+                  </label>
+                </div>
+
+                <div class="d-flex gap-2">
+                  <button type="button" @click="prevStep" class="btn btn-custom-secondary w-50">
+                    <i class="bi bi-arrow-left me-1"></i> Voltar
+                  </button>
+                  <button type="submit" class="btn btn-custom-primary w-50" style="background: linear-gradient(135deg, var(--success-color) 0%, #10ac84 100%);">
+                    Enviar <i class="bi bi-check-circle ms-1"></i>
+                  </button>
+                </div>
+              </div>
+
+            </transition>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrate Agora - Autoatendimento</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Font - Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --green-dark: #005a10;
+            --green-bg-start: #005f12;
+            --green-bg-end: #004d0e;
+            --green-neon: #a2ff00;
+            --green-button-hover: #b5ff24;
+            --text-white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0d1e0f;
+        }
+
+        /* Banner Wrapper com Gradiente Verde Fechado */
+        .contact-wrapper {
+            width: 100%;
+            background: radial-gradient(circle at 50% 50%, #006b15 0%, #00480c 70%, #003608 100%);
+            padding: 50px 20px 60px 20px;
+            color: var(--text-white);
+            position: relative;
+        }
+
+        .contact-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* --- SEÇÃO SUPERIOR: CONTRATE AGORA --- */
+        .main-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--green-neon);
+            margin-bottom: 35px;
+            letter-spacing: -0.5px;
+        }
+
+        .action-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--text-white);
+            font-size: 1.15rem;
+            font-weight: 700;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .action-link:hover {
+            color: var(--green-neon);
+            opacity: 0.95;
+            transform: translateY(-2px);
+        }
+
+        .icon-circle-lg {
+            width: 52px;
+            height: 52px;
+            background-color: var(--green-neon);
+            color: #00480c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .divider-line {
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 480px;
+            margin: 18px auto 0 auto;
+        }
+
+        /* Linha Divisória Central Suave */
+        .middle-hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+            margin: 45px 0;
+        }
+
+        /* --- SEÇÃO INFERIOR: AUTOATENDIMENTO --- */
+        .self-service-title {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--green-neon);
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .self-service-subtitle {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+            max-width: 280px;
+        }
+
+        /* Cards do Autoatendimento */
+        .service-card {
+            background-color: var(--green-neon);
+            color: #0a2900;
+            border-radius: 20px;
+            padding: 20px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 125px;
+            width: 100%;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card:hover {
+            background-color: var(--green-button-hover);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 22px rgba(162, 255, 0, 0.35);
+            color: #000;
+        }
+
+        .service-icon {
+            font-size: 1.9rem;
+            margin-bottom: 10px;
+            color: #073800;
+        }
+
+        .service-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            line-height: 1.2;
+            text-transform: capitalize;
+        }
+
+        /* Barra decorativa inferior */
+        .bottom-stripe {
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(90deg, #a2ff00 0%, #00ff66 100%);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 991px) {
+            .self-service-text-box {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .self-service-subtitle {
+                max-width: 100%;
+            }
+            .top-action-col {
+                margin-bottom: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app" class="contact-wrapper">
+        <div class="contact-container">
+            
+            <!-- Título Principal -->
+            <h2 class="main-title">{{ mainTitle }}</h2>
+
+            <!-- Seção 1: Canais de Contratação Rápidos -->
+            <div class="row justify-content-center">
+                <!-- Chame no WhatsApp -->
+                <div class="col-12 col-md-5 top-action-col">
+                    <a :href="whatsappUrl" target="_blank" class="action-link">
+                        <div class="icon-circle-lg">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <span>{{ whatsappText }}</span>
+                    </a>
+                    <div class="divider-line"></div>
+                </div>
+
+                <!-- Ligue Agora -->
+                <div class="col-12 col-md-5 top-action-col">
+                    <a :href="'tel:' + phoneFormatted" class="action-link">
+                        <div class="icon-circle-lg">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <span>{{ phoneText }}</span>
+                    </a>
+                    <div class="divider-line"></div>
+                </div>
+            </div>
+
+            <!-- Linha Divisória -->
+            <hr class="middle-hr">
+
+            <!-- Seção 2: Autoatendimento para Clientes -->
+            <div class="row align-items-center">
+                <!-- Texto da Esquerda -->
+                <div class="col-12 col-lg-4 self-service-text-box">
+                    <h3 class="self-service-title" v-html="selfServiceTitle"></h3>
+                    <p class="self-service-subtitle">{{ selfServiceSubtitle }}</p>
+                </div>
+
+                <!-- 4 Botões da Direita -->
+                <div class="col-12 col-lg-8">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-6 col-sm-3" v-for="(item, index) in selfServiceItems" :key="index">
+                            <a :href="item.link" class="service-card">
+                                <i :class="[item.icon, 'service-icon']"></i>
+                                <span class="service-label" v-html="item.label"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Linha decorativa no rodapé -->
+        <div class="bottom-stripe"></div>
+    </div>
+
+    <!-- Vue.js 2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                mainTitle: 'Contrate agora',
+                whatsappText: 'Chame no WhatsApp',
+                whatsappNumber: '5511999999999',
+                phoneText: 'Ligue agora 244933741797',
+                phoneFormatted: '08003663636',
+                selfServiceTitle: 'Autoatendimento<br>para clientes',
+                selfServiceSubtitle: 'Com poucos cliques você resolve o que precisa',
+                
+                selfServiceItems: [
+                    {
+                        icon: 'fa-solid fa-file-signature',
+                        label: 'Central do<br>assinante',
+                        link: '#'
+                    },
+                    {
+                        icon: 'fa-solid fa-file-invoice-dollar',
+                        label: '2ª via do<br>boleto/PIX',
+                        link: '#'
+                    },
+                    {
+                        icon: 'fa-brands fa-whatsapp',
+                        label: 'Atendimento<br>via WhatsApp',
+                        link: '#'
+                    },
+                    {
+                        icon: 'fa-solid fa-headset',
+                        label: 'Solicitar<br>suporte',
+                        link: '#'
+                    }
+                ]
+            },
+            computed: {
+                whatsappUrl() {
+                    const text = encodeURIComponent('Olá! Gostaria de contratar os serviços.');
+                    return `https://wa.me/${this.whatsappNumber}?text=${text}`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

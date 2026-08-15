@@ -1,0 +1,395 @@
+<div>
+ 
+  <section
+    class="hero-section"
+    :style="{ backgroundImage: 'url(' + currentSlide.bgImage + ')' }"
+  >
+    <div class="hero-overlay"></div>
+
+    <div class="container-fluid hero-container container">
+      <div class="row align-items-center">
+        <!-- Card da Esquerda -->
+        <div
+          class="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-start"
+        >
+          <div class="card-dabanda">
+            <div class="brand-dabanda">
+              {{ currentSlide.cardTitle }}
+              <span class="italic-home">{{ currentSlide.cardHighlight }}</span>
+            </div>
+            <div class="card-divider"></div>
+            <p
+              class="card-description"
+              v-html="currentSlide.cardDescription"
+            ></p>
+            <a :href="currentSlide.linkAdira" class="btn-card-pill">Adira Já</a>
+            <a href="#plano" class="btn-card-pill with-arrow">
+              <i
+                class="fa-solid fa-chevron-right"
+                style="font-size: 0.65rem"
+              ></i>
+              Planos
+            </a>
+          </div>
+        </div>
+
+        <!-- Conteúdo da Direita -->
+        <div
+          class="col-12 col-lg-7 text-center text-lg-start hero-right-content ps-lg-5"
+        >
+          <h1 class="hero-title-right">
+            {{ currentSlide.mainTitlePrefix }}
+            <span class="highlight">{{ currentSlide.mainTitleHighlight }}</span>
+          </h1>
+          <p class="hero-subtitle-right">{{ currentSlide.subtitle }}</p>
+          <a :href="currentSlide.linkTambemQuero" class="btn-tambem-quero">
+            Também quero
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões Prev e Next -->
+    <div class="slider-controls-bottom-right">
+      <span class="slide-counter"
+        >0{{ currentSlideIndex + 1 }} / 0{{ slides.length }}</span
+      >
+      <button class="btn-slider-nav" @click="prevSlideManual" title="Anterior">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="btn-slider-nav" @click="nextSlideManual" title="Próximo">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="container">
+      <div class="row g-3 justify-content-center">
+        <!-- CARD 1 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feature-card_oferecemos">
+            <div class="feature-icon">
+              <i class="fa-solid fa-wifi"></i>
+            </div>
+            <p class="feature-text">
+              Instalação sem custos e roteador consignado
+            </p>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feature-card_oferecemos">
+            <div class="feature-icon">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <p class="feature-text">Suporte personalizado 24 horas por dia</p>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feature-card_oferecemos">
+            <div class="feature-icon">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <p class="feature-text">Conexão rápida 100% fibra ótica</p>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="feature-card_oferecemos">
+            <div class="feature-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <p class="feature-text">Navegue com rapidez e segurança</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="jls-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Coluna da Esquerda: Textos e Botão -->
+        <div class="col-lg-6 pe-lg-5">
+          <h2 class="jls-title">A AFRIWIND TELECOM</h2>
+
+          <p class="jls-lead">
+            Somos empresa angolana fundada em 2021, especializada em soluções integradas de telecomunicações e Tecnologias de Informação (TI).
+          </p>
+
+          <p class="jls-text">
+          O nosso compromisso é conectar pessoas, empresas e instituições a serviços de alta qualidade, desempenho e segurança.
+          </p>
+
+          <a href="#/sobre" class="btn-jls">Conheça-nos melhor</a>
+        </div>
+
+        <!-- Coluna da Direita: Imagem com Card de Anos de Existência -->
+        <div class="col-lg-6 right-col">
+          <div class="img-container">
+            <!-- Substitua o URL abaixo pela imagem real do edifício do jls -->
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80"
+              alt="Edifício do jls"
+              class="main-img"
+            />
+
+            <!-- Card Sobreposto -->
+            <div class="badge-card">
+              <span class="badge-number">06</span>
+              <span class="badge-label">ANOS DE EXISTÊNCIA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div id="plano" class="plans-wrapper jls-section" >
+        <div class="plans-container">
+            
+            <!-- Título da Seção -->
+            <div class="header-box">
+                <h1 class="main-title2 "><span class="text-white">Escolha o seu novo </span> plano</h1>
+                <p class="main-subtitle2 text-white">Conectividade ultra rápida com fibra óptica para você jogar, assistir a filmes em 4K e navegar sem travamentos.</p>
+            </div>
+
+            <!-- Cards via Vue.js -->
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-sm-6 col-lg-3" v-for="(plan, index) in plans" :key="index">
+                    <div class="card-plan-wrapper">
+                        
+                        <!-- Badge de Mais Vendido -->
+                        <div v-if="plan.featured" class="badge-popular">
+                            <i class="bi bi-star-fill me-1"></i> Mais Vendido
+                        </div>
+
+                        <div class="card-plan" :class="{ 'featured': plan.featured }">
+                            <div>
+                                <!-- Nome do Plano -->
+                                <div class="plan-title">{{ plan.name }}</div>
+
+                                <!-- Velocidade Mega -->
+                                <div class="speed-box">
+                                    <span class="speed-number">{{ plan.speed }}</span>
+                                    <span class="badge-mega">mega</span>
+                                </div>
+
+                                <!-- Bloco de Preço -->
+                                <div class="price-box">
+                                    <div class="price-prefix">
+                                        <span class="apenas">APENAS</span>
+                                        <span class="rs">kz</span>
+                                    </div>
+                                    <div class="price-main">{{ plan.priceReais }} <span style="font-size: 12px;"></span></div>
+                                    <div class="price-suffix">
+                                        <span class="price-cents">,{{ plan.priceCents }}</span>
+                                        <span class="price-period">/mês</span>
+                                    </div>
+                                </div>
+
+                                <!-- Badge Instalação -->
+                                <div>
+                                    <span class="badge-install">
+                                        <i class="bi bi-check-circle-fill"></i> INSTALAÇÃO <span style="color: #fff;">56.000KZ</span> 
+                                    </span>
+                                </div>
+
+                                <!-- Recursos com Ícones -->
+                                <ul class="features-list">
+                                    <li v-for="(feat, fIdx) in plan.features" :key="fIdx">
+                                        <i class="bi bi-plus-circle-fill"></i> {{ feat }}
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Botão Ação -->
+                            <div>
+                                <button class="btn btn-contratar" @click="contratar(plan)">
+                                    <i class="bi bi-whatsapp"></i> CONTRATAR
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="container section-container jls-section">
+        
+        <!-- Título e Descrição da Seção -->
+        <div class="row">
+            <div class="col-12">
+                <h2 class="main-title2">Mais diversão para você e sua família! </h2>
+                <p class="main-subtitle2" v-html="subtitle"></p>
+            </div>
+        </div>
+
+        <!-- Bloco Principal de Conteúdo em 2 Colunas -->
+        <div class="row g-4 align-items-stretch">
+            
+            <!-- Coluna 1: Apps planos Standard -->
+            <div class="col-12 col-lg-6">
+                <div class="app-box">
+                    <span class="box-badge">Apps planos Standard</span>
+                    <div class="apps-grid">
+                        <div v-for="(app, index) in standardApps" 
+                             :key="'std-' + index" 
+                             class="app-card"
+                             :class="{ 'bg-white-logo': app.isWhiteBg }"
+                             :style="app.styleObj"
+                             :title="app.name">
+                             
+                            <!-- Se for logo com vetor/imagem direto e fundo branco -->
+                            <img v-if="app.imageUrl" :src="app.imageUrl" :alt="app.name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna 2: Apps planos Premium -->
+            <div class="col-12 col-lg-6">
+                <div class="app-box">
+                    <span class="box-badge">Apps planos Premium</span>
+                    <div class="apps-grid">
+                        <div v-for="(app, index) in premiumApps" 
+                             :key="'prem-' + index" 
+                             class="app-card"
+                             :class="{ 'bg-white-logo': app.isWhiteBg }"
+                             :style="app.styleObj"
+                             :title="app.name">
+                             
+                            <!-- Se for logo com vetor/imagem direto e fundo branco -->
+                            <img v-if="app.imageUrl" :src="app.imageUrl" :alt="app.name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="container why-choose-section jls-section">
+        <div class="row align-items-center">
+            
+            <!-- Coluna da Esquerda: Foto e Efeitos Visuais -->
+            <div class="col-12 col-lg-5">
+                <div class="image-container">
+                    <!-- Elementos Decorativos de Fundo -->
+                    <div class="circle-bg-2"></div>
+                    <div class="circle-bg-1"></div>
+                    
+                    <div class="bubble bubble-1"></div>
+                    <div class="bubble bubble-2"></div>
+                    <div class="bubble bubble-3"></div>
+                    <div class="bubble bubble-4"></div>
+
+                    <div class="wifi-icon-bg">
+                        <i class="fa-solid fa-wifi"></i>
+                    </div>
+
+                    <!-- Imagem da Pessoa (URL Exemplo) -->
+                    <img src="./assets/images/porque.png" 
+                         alt="Cliente satisfeito Mr. Ynet" 
+                         class="person-image">
+                </div>
+            </div>
+
+            <!-- Coluna da Direita: Título e Grid de Benefícios -->
+            <div class="col-12 col-lg-7">
+                <h2 class="main-title2" v-html="title"></h2>
+
+                <!-- Grid de Benefícios dinamizada via Vue.js -->
+                <div class="row g-3">
+                    <div class="col-12 col-sm-6" v-for="(feature, index) in features" :key="index">
+                        <div class="feature-card">
+                            <div class="icon-wrapper">
+                                <i :class="feature.icon"></i>
+                            </div>
+                            <h3 class="feature-title">{{ feature.title }}</h3>
+                            <p class="feature-description">{{ feature.description }}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+     <div class="contact-wrapper jls-section">
+        <div class="contact-container">
+            
+            <!-- Título Principal -->
+            <h2 class="main-title">{{ mainTitle }}</h2>
+
+            <!-- Seção 1: Canais de Contratação Rápidos -->
+            <div class="row justify-content-center">
+                <!-- Chame no WhatsApp -->
+                <div class="col-12 col-md-5 top-action-col">
+                    <a :href="whatsappUrl" target="_blank" class="action-link">
+                        <div class="icon-circle-lg">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <span>{{ whatsappText }}</span>
+                    </a>
+                    <div class="divider-line"></div>
+                </div>
+
+                <!-- Ligue Agora -->
+                <div class="col-12 col-md-5 top-action-col">
+                    <a :href="'tel:' + phoneFormatted" class="action-link">
+                        <div class="icon-circle-lg">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <span>{{ phoneText }}</span>
+                    </a>
+                    <div class="divider-line"></div>
+                </div>
+            </div>
+
+            <!-- Linha Divisória -->
+            <hr class="middle-hr">
+
+            <!-- Seção 2: Autoatendimento para Clientes -->
+            <div class="row align-items-center">
+                <!-- Texto da Esquerda -->
+                <div class="col-12 col-lg-4 self-service-text-box">
+                    <h3 class="self-service-title" v-html="selfServiceTitle"></h3>
+                    <p class="self-service-subtitle">{{ selfServiceSubtitle }}</p>
+                </div>
+
+                <!-- 4 Botões da Direita -->
+                <div class="col-12 col-lg-8">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-6 col-sm-3" v-for="(item, index) in selfServiceItems" :key="index">
+                            <a :href="item.link" class="service-card">
+                                <i :class="[item.icon, 'service-icon']"></i>
+                                <span class="service-label" v-html="item.label"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Linha decorativa no rodapé -->
+        <div class="bottom-stripe"></div>
+    </div>
+
+
+</div>

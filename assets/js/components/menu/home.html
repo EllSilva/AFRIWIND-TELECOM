@@ -1,0 +1,37 @@
+    <header class="navbar-telbanda">
+            <div class="container-fluid d-flex align-items-center justify-content-between p-0">
+                
+                <!-- Logo -->
+                <a href="#" class="brand-logo">
+                    <div class="brand-title">
+                      <img src="./assets/images/logo.png" alt="" style="width: 150px;">
+                       
+                    </div> 
+                </a>
+
+                <!-- Menu Desktop -->
+                <nav class="nav-links-container">
+                    <a v-for="(item, idx) in menuItems" :key="idx" :href="item.link" class="nav-item-custom">
+                        {{ item.label }}
+                    </a>
+                </nav>
+
+                <!-- Lado Direito -->
+                <div class="d-flex align-items-center gap-3">
+                    
+
+                    <!-- Botão Hambúrguer Mobile -->
+                    <button class="btn-menu-toggle" ref="toggleBtn" @click="toggleMenu" aria-label="Abrir Menu">
+                        <i :class="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Menu Mobile Dropdown (com ref="mobileMenu") -->
+            <div class="mobile-menu-overlay" ref="mobileMenu" :class="{ active: isMenuOpen }">
+                <a v-for="(item, idx) in menuItems" :key="'mob-' + idx" :href="item.link" class="mobile-nav-item" @click="closeMenu">
+                    {{ item.label }}
+                </a>
+            </div>
+        </header>

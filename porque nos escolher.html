@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porque escolher a Mr. Ynet?</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Font - Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --green-primary: #12821d;
+            --green-light: #e3f9e5;
+            --green-circle: rgba(18, 130, 29, 0.15);
+            --border-color: #dbe7dc;
+            --text-dark: #1a1a1a;
+            --text-gray: #666666;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 60px 0;
+        }
+
+        .why-choose-section {
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        /* --- LADO ESQUERDO: COMPOSIÇÃO DA IMAGEM E CÍRCULOS --- */
+        .image-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        /* Círculos Verdes Decorativos de Fundo */
+        .circle-bg-1 {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(162, 255, 0, 0.25) 0%, rgba(18, 130, 29, 0.4) 70%, rgba(18, 130, 29, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .circle-bg-2 {
+            position: absolute;
+            width: 440px;
+            height: 440px;
+            border-radius: 50%;
+            border: 2px solid rgba(18, 130, 29, 0.25);
+            z-index: 0;
+        }
+
+        /* Bolhas pequenas no entorno */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(162, 255, 0, 0.35);
+            z-index: 1;
+        }
+
+        .bubble-1 { width: 30px; height: 30px; top: 10%; right: 15%; }
+        .bubble-2 { width: 20px; height: 20px; top: 35%; right: 5%; }
+        .bubble-3 { width: 25px; height: 25px; bottom: 20%; left: 10%; }
+        .bubble-4 { width: 45px; height: 45px; bottom: 5%; left: 22%; background-color: rgba(162, 255, 0, 0.25); }
+
+        /* Sinal de Wi-Fi acima da cabeça */
+        .wifi-icon-bg {
+            position: absolute;
+            top: 2%;
+            left: 20%;
+            color: var(--green-primary);
+            font-size: 2.5rem;
+            z-index: 3;
+            transform: rotate(-20deg);
+        }
+
+        /* Foto da Pessoa */
+        .person-image {
+            position: relative;
+            z-index: 2;
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* --- LADO DIREITO: TÍTULO E CARDS --- */
+        .main-title {
+            color: var(--green-primary);
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        /* Estilo dos Cards de Recursos */
+        .feature-card {
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px 20px;
+            height: 100%;
+            text-align: center;
+            background-color: #ffffff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-50px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-color: var(--green-primary);
+        }
+
+        /* Ícones dos Cards */
+        .icon-wrapper {
+            width: 50px;
+            height: 50px;
+            background-color: var(--green-primary);
+            color: #ffffff;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-title {
+            color: var(--green-primary);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-description {
+            color: var(--text-gray);
+            font-size: 0.82rem;
+            font-weight: 500;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 991px) {
+            .image-container {
+                margin-bottom: 40px;
+            }
+            .main-title {
+                text-align: center;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app" class="container why-choose-section">
+        <div class="row align-items-center">
+            
+            <!-- Coluna da Esquerda: Foto e Efeitos Visuais -->
+            <div class="col-12 col-lg-5">
+                <div class="image-container">
+                    <!-- Elementos Decorativos de Fundo -->
+                    <div class="circle-bg-2"></div>
+                    <div class="circle-bg-1"></div>
+                    
+                    <div class="bubble bubble-1"></div>
+                    <div class="bubble bubble-2"></div>
+                    <div class="bubble bubble-3"></div>
+                    <div class="bubble bubble-4"></div>
+
+                    <div class="wifi-icon-bg">
+                        <i class="fa-solid fa-wifi"></i>
+                    </div>
+
+                    <!-- Imagem da Pessoa (URL Exemplo) -->
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" 
+                         alt="Cliente satisfeito Mr. Ynet" 
+                         class="person-image">
+                </div>
+            </div>
+
+            <!-- Coluna da Direita: Título e Grid de Benefícios -->
+            <div class="col-12 col-lg-7">
+                <h2 class="main-title" v-html="title"></h2>
+
+                <!-- Grid de Benefícios dinamizada via Vue.js -->
+                <div class="row g-3">
+                    <div class="col-12 col-sm-6" v-for="(feature, index) in features" :key="index">
+                        <div class="feature-card">
+                            <div class="icon-wrapper">
+                                <i :class="feature.icon"></i>
+                            </div>
+                            <h3 class="feature-title">{{ feature.title }}</h3>
+                            <p class="feature-description">{{ feature.description }}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Vue.js 2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'Porque escolher<br>a Mr. Ynet?',
+                features: [
+                    {
+                        icon: 'fa-solid fa-gauge-high',
+                        title: 'Mais velocidade',
+                        description: 'Tenha uma navegação mais rápida, e uma internet mais estável'
+                    },
+                    {
+                        icon: 'fa-solid fa-network-wired',
+                        title: '100% Fibra Ótica',
+                        description: 'Mais estabilidade, alta velocidade e total confiança na sua conexão'
+                    },
+                    {
+                        icon: 'fa-solid fa-cloud-arrow-up',
+                        title: 'Velocidade de Upload',
+                        description: 'Compartilhe fotos e vídeos com rapidez graças à alta velocidade de upload.'
+                    },
+                    {
+                        icon: 'fa-solid fa-cloud-arrow-down',
+                        title: 'Downloads rápidos',
+                        description: 'Baixe arquivos, assista a vídeos em 4K e jogue online com máxima performance.'
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TELBANDA - Por Todo Lado</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cyan-telbanda: #00aeef;
+            --blue-login: #0072ce;
+            --bg-black: #020204;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER / MENU --- */
+        .navbar-telbanda {
+            background-color: rgba(2, 2, 4, 0.95);
+            padding: 12px 6%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 100;
+        }
+
+        .brand-logo {
+            text-decoration: none;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .brand-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .brand-subtitle {
+            font-size: 0.5rem;
+            color: #888;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 400;
+            display: block;
+            margin-top: 1px;
+        }
+
+        .nav-links-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item-custom {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 300;
+            padding: 0 25px;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            transition: color 0.2s ease;
+        }
+
+        .nav-item-custom:last-of-type {
+            border-right: none;
+        }
+
+        .nav-item-custom:hover {
+            color: var(--cyan-telbanda);
+        }
+
+        .btn-login {
+            background-color: var(--blue-login);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 7px 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #005bb5;
+            color: #ffffff;
+        }
+
+        .btn-login i {
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            padding: 3px;
+        }
+
+        /* Botão do Menu Hambúrguer (Mobile) */
+        .btn-menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Container do Menu Mobile */
+        .mobile-menu-overlay {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(2, 2, 4, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 6%;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 99;
+        }
+
+        .mobile-menu-overlay.active {
+            display: flex;
+        }
+
+        .mobile-nav-item {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 300;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-nav-item:hover {
+            color: var(--cyan-telbanda);
+        }
+
+        /* --- HERO / SLIDER SECTION --- */
+        .hero-section {
+            position: relative;
+            min-height: calc(100vh - 65px);
+            display: flex;
+            align-items: center;
+            background-color: #020204;
+            background-size: cover;
+            background-position: center center;
+            transition: background-image 0.8s ease-in-out;
+        }
+
+        /* Camada de Gradiente */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 45% 40%, rgba(200, 10, 40, 0.45) 0%, transparent 45%),
+                radial-gradient(circle at 75% 35%, rgba(0, 174, 239, 0.35) 0%, transparent 40%),
+                linear-gradient(to right, rgba(2,2,4,0.9) 0%, rgba(2,2,4,0.2) 50%, rgba(2,2,4,0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 40px 6%;
+        }
+
+        /* CARD DA ESQUERDA */
+        .card-dabanda {
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 4px;
+            padding: 35px 25px 25px 25px;
+            text-align: center;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .brand-dabanda {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-dabanda span.italic-home {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-weight: 700;
+            font-size: 1.7rem;
+            margin-left: 2px;
+        }
+
+        .card-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            width: 90%;
+            margin: 0 auto 18px auto;
+        }
+
+        .card-description {
+            font-size: 0.75rem;
+            color: #d1d1d1;
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 22px;
+        }
+
+        .btn-card-pill {
+            display: block;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 20px;
+            padding: 7px 15px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 300;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .btn-card-pill:hover {
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
+
+        .btn-card-pill.with-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        /* TEXTO DA DIREITA */
+        .hero-title-right {
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-title-right span.highlight {
+            color: var(--cyan-telbanda);
+            font-weight: 400;
+        }
+
+        .hero-subtitle-right {
+            font-size: 1.15rem;
+            font-weight: 200;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-tambem-quero {
+            background-color: #ffffff;
+            color: #111111;
+            border-radius: 25px;
+            padding: 10px 32px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-tambem-quero:hover {
+            background-color: #f0f0f0;
+            color: #000000;
+            transform: translateY(-1px);
+        }
+
+        /* --- CONTROLES DO SLIDER --- */
+        .slider-controls-bottom-right {
+            position: absolute;
+            bottom: 30px;
+            right: 6%;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .slide-counter {
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+        }
+
+        .btn-slider-nav {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-slider-nav:hover {
+            background: var(--cyan-telbanda);
+            border-color: var(--cyan-telbanda);
+            color: #ffffff;
+            transform: scale(1.08);
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 991px) {
+            .nav-links-container {
+                display: none;
+            }
+
+            .btn-menu-toggle {
+                display: block;
+            }
+
+            .hero-right-content {
+                margin-top: 35px;
+                text-align: center;
+            }
+
+            .hero-title-right {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle-right {
+                font-size: 0.95rem;
+            }
+
+            .card-dabanda {
+                margin: 0 auto;
+            }
+
+            .slider-controls-bottom-right {
+                bottom: 15px;
+                right: 50%;
+                transform: translateX(50%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- HEADER / MENU -->
+        <header class="navbar-telbanda">
+            <div class="container-fluid d-flex align-items-center justify-content-between p-0">
+                
+                <!-- Logo -->
+                <a href="#" class="brand-logo">
+                    <div class="brand-title">
+                        telbanda
+                        <i class="fa-solid fa-asterisk" style="font-size: 0.65rem; color: var(--cyan-telbanda);"></i>
+                    </div>
+                    <span class="brand-subtitle">por todo lado</span>
+                </a>
+
+                <!-- Menu Desktop -->
+                <nav class="nav-links-container">
+                    <a v-for="(item, idx) in menuItems" :key="idx" :href="item.link" class="nav-item-custom">
+                        {{ item.label }}
+                    </a>
+                </nav>
+
+                <!-- Lado Direito -->
+                <div class="d-flex align-items-center gap-3">
+                    <a href="#" class="btn-login">
+                        Fazer Login
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <button class="btn-menu-toggle" @click="toggleMenu" aria-label="Abrir Menu">
+                        <i :class="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Menu Mobile -->
+            <div class="mobile-menu-overlay" :class="{ active: isMenuOpen }">
+                <a v-for="(item, idx) in menuItems" :key="'mob-' + idx" :href="item.link" class="mobile-nav-item" @click="toggleMenu">
+                    {{ item.label }}
+                </a>
+            </div>
+        </header>
+
+        <!-- HERO BANNER / SLIDER -->
+        <section class="hero-section" :style="{ backgroundImage: 'url(' + currentSlide.bgImage + ')' }">
+            <div class="hero-overlay"></div>
+
+            <div class="container-fluid hero-container">
+                <div class="row align-items-center">
+                    
+                    <!-- Card da Esquerda -->
+                    <div class="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-start">
+                        <div class="card-dabanda">
+                            <div class="brand-dabanda">
+                                {{ currentSlide.cardTitle }} <span class="italic-home">{{ currentSlide.cardHighlight }}</span>
+                            </div>
+                            <div class="card-divider"></div>
+                            <p class="card-description" v-html="currentSlide.cardDescription"></p>
+                            <a :href="currentSlide.linkAdira" class="btn-card-pill">Adira Já</a>
+                            <a :href="currentSlide.linkPlanos" class="btn-card-pill with-arrow">
+                                <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i> Planos
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Conteúdo da Direita -->
+                    <div class="col-12 col-lg-7 text-center text-lg-start hero-right-content ps-lg-5">
+                        <h1 class="hero-title-right">
+                            {{ currentSlide.mainTitlePrefix }} <span class="highlight">{{ currentSlide.mainTitleHighlight }}</span>
+                        </h1>
+                        <p class="hero-subtitle-right">
+                            {{ currentSlide.subtitle }}
+                        </p>
+                        <a :href="currentSlide.linkTambemQuero" class="btn-tambem-quero">
+                            Também quero
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Botões Prev e Next -->
+            <div class="slider-controls-bottom-right">
+                <span class="slide-counter">0{{ currentSlideIndex + 1 }} / 0{{ slides.length }}</span>
+                <button class="btn-slider-nav" @click="prevSlideManual" title="Anterior">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="btn-slider-nav" @click="nextSlideManual" title="Próximo">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Vue.js 2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isMenuOpen: false,
+                autoplayTimer: null,
+                autoplayInterval: 5000, // Tempo em milissegundos (5 segundos)
+                menuItems: [
+                    { label: 'Serviços', link: '#' },
+                    { label: 'Planos', link: '#' },
+                    { label: 'Como carregar um plano ?', link: '#' },
+                    { label: 'Tabela de Preços', link: '#' },
+                    { label: 'Contactos', link: '#' }
+                ],
+                currentSlideIndex: 0,
+                slides: [
+                    {
+                        bgImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=80',
+                        cardTitle: 'dabanda',
+                        cardHighlight: 'home',
+                        cardDescription: 'A internet LTE à medida da sua residência<br>ou empresa',
+                        linkAdira: '#',
+                        linkPlanos: '#',
+                        mainTitlePrefix: 'POR TODO',
+                        mainTitleHighlight: 'LADO',
+                        subtitle: 'Não importa aonde esteja, Internet ? Só aqui',
+                        linkTambemQuero: '#'
+                    },
+                    {
+                        bgImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1600&q=80',
+                        cardTitle: 'dabanda',
+                        cardHighlight: 'business',
+                        cardDescription: 'Conexão dedicada e máxima estabilidade<br>para os seus negócios',
+                        linkAdira: '#',
+                        linkPlanos: '#',
+                        mainTitlePrefix: 'ULTRA',
+                        mainTitleHighlight: 'VELOZ',
+                        subtitle: 'A melhor fibra óptica e 4G para impulsionar a sua empresa',
+                        linkTambemQuero: '#'
+                    },
+                    {
+                        bgImage: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=80',
+                        cardTitle: 'dabanda',
+                        cardHighlight: 'mobile',
+                        cardDescription: 'Internet portátil para estar sempre ligado<br>onde quer que vá',
+                        linkAdira: '#',
+                        linkPlanos: '#',
+                        mainTitlePrefix: 'SEM',
+                        mainTitleHighlight: 'LIMITES',
+                        subtitle: 'Liberdade total de navegação em qualquer ponto do país',
+                        linkTambemQuero: '#'
+                    }
+                ]
+            },
+            computed: {
+                currentSlide() {
+                    return this.slides[this.currentSlideIndex];
+                }
+            },
+            mounted() {
+                // Inicia a troca automática assim que a página é carregada
+                this.startAutoplay();
+            },
+            beforeDestroy() {
+                // Limpa o temporizador se o componente for destruído
+                this.stopAutoplay();
+            },
+            methods: {
+                toggleMenu() {
+                    this.isMenuOpen = !this.isMenuOpen;
+                },
+                nextSlide() {
+                    this.currentSlideIndex = (this.currentSlideIndex + 1) % this.slides.length;
+                },
+                prevSlide() {
+                    this.currentSlideIndex = (this.currentSlideIndex - 1 + this.slides.length) % this.slides.length;
+                },
+                nextSlideManual() {
+                    this.nextSlide();
+                    this.resetAutoplay(); // Reinicia o tempo automático ao clicar
+                },
+                prevSlideManual() {
+                    this.prevSlide();
+                    this.resetAutoplay(); // Reinicia o tempo automático ao clicar
+                },
+                startAutoplay() {
+                    this.autoplayTimer = setInterval(() => {
+                        this.nextSlide();
+                    }, this.autoplayInterval);
+                },
+                stopAutoplay() {
+                    if (this.autoplayTimer) {
+                        clearInterval(this.autoplayTimer);
+                    }
+                },
+                resetAutoplay() {
+                    this.stopAutoplay();
+                    this.startAutoplay();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

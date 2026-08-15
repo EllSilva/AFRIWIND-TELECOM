@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos de Internet</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Font (Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-neon: #a2ff00;
+            --primary-neon-hover: #b8ff33;
+            --dark-bg: #071208;
+            --card-bg: rgba(12, 28, 14, 0.65);
+            --card-border: rgba(162, 255, 0, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Wrapper principal com gradiente avançado */
+        .plans-wrapper {
+            width: 100%;
+            min-height: 100vh;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(162, 255, 0, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(162, 255, 0, 0.05) 0%, transparent 40%),
+                linear-gradient(135deg, rgba(8, 35, 10, 0.95) 0%, rgba(5, 18, 6, 0.98) 100%),
+                url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            padding: 60px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .plans-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Cabecalho da Seção */
+        .header-box {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .main-title {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-title span {
+            color: var(--primary-neon);
+            background: linear-gradient(180deg, #a2ff00 0%, #76c400 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .main-subtitle {
+            color: #b3d1b5;
+            font-size: 1rem;
+            font-weight: 500;
+            max-width: 650px;
+            margin: 10px auto 0 auto;
+        }
+
+        /* Card de Plano Premium */
+        .card-plan-wrapper {
+            position: relative;
+            height: 100%;
+            padding-top: 12px; /* Espaço para o badge de popular */
+        }
+
+        .card-plan {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 28px 18px 22px 18px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-plan:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-neon);
+            box-shadow: 0 15px 35px rgba(162, 255, 0, 0.15), 0 0 15px rgba(162, 255, 0, 0.1);
+            background: rgba(15, 38, 18, 0.85);
+        }
+
+        /* Card Mais Popular (Destaque) */
+        .card-plan.featured {
+            border: 2px solid var(--primary-neon);
+            box-shadow: 0 0 25px rgba(162, 255, 0, 0.2);
+            background: rgba(18, 48, 22, 0.75);
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-neon);
+            color: #000;
+            font-size: 0.65rem;
+            font-weight: 900;
+            padding: 4px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(162, 255, 0, 0.4);
+            z-index: 2;
+            white-space: nowrap;
+        }
+
+        .plan-title {
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        /* Bloco de Velocidade */
+        .speed-box {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .speed-number {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -3px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .badge-mega {
+            background-color: var(--primary-neon);
+            color: #000000;
+            font-size: 0.75rem;
+            font-weight: 900;
+            padding: 3px 6px;
+            border-radius: 4px;
+            margin-left: 4px;
+            text-transform: lowercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Bloco de Preço */
+        .price-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .price-prefix {
+            text-align: right;
+            margin-right: 6px;
+            line-height: 1.1;
+        }
+
+        .price-prefix .apenas {
+            display: block;
+            font-size: 0.55rem;
+            font-weight: 800;
+            color: var(--primary-neon);
+            letter-spacing: 1px;
+        }
+
+        .price-prefix .rs {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #ffffff;
+        }
+
+        .price-main {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 0.8;
+            letter-spacing: -1.5px;
+        }
+
+        .price-suffix {
+            text-align: left;
+            margin-left: 4px;
+            line-height: 1;
+        }
+
+        .price-cents {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #ffffff;
+            display: block;
+        }
+
+        .price-period {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Selo Instalação */
+        .badge-install {
+            background: rgba(162, 255, 0, 0.1);
+            border: 1px solid rgba(162, 255, 0, 0.4);
+            color: var(--primary-neon);
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Recursos */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            color: #e0e0e0;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.9;
+        }
+
+        .features-list li i {
+            color: var(--primary-neon);
+            font-size: 0.9rem;
+        }
+
+        /* Botão Ação */
+        .btn-contratar {
+            background: linear-gradient(135deg, #a2ff00 0%, #85d600 100%);
+            color: #051406;
+            font-weight: 900;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(162, 255, 0, 0.25);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-contratar:hover {
+            background: linear-gradient(135deg, #b8ff33 0%, #99f000 100%);
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(162, 255, 0, 0.4);
+            color: #000;
+        }
+
+        .btn-contratar:active {
+            transform: scale(0.98);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 1.8rem;
+            }
+            .plans-wrapper {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app" class="plans-wrapper">
+        <div class="plans-container">
+            
+            <!-- Título da Seção -->
+            <div class="header-box">
+                <h1 class="main-title">Escolha o seu <span>novo plano</span></h1>
+                <p class="main-subtitle">Conectividade ultra rápida com fibra óptica para você jogar, assistir a filmes em 4K e navegar sem travamentos.</p>
+            </div>
+
+            <!-- Cards via Vue.js -->
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-sm-6 col-lg-3" v-for="(plan, index) in plans" :key="index">
+                    <div class="card-plan-wrapper">
+                        
+                        <!-- Badge de Mais Vendido -->
+                        <div v-if="plan.featured" class="badge-popular">
+                            <i class="bi bi-star-fill me-1"></i> Mais Vendido
+                        </div>
+
+                        <div class="card-plan" :class="{ 'featured': plan.featured }">
+                            <div>
+                                <!-- Nome do Plano -->
+                                <div class="plan-title">{{ plan.name }}</div>
+
+                                <!-- Velocidade Mega -->
+                                <div class="speed-box">
+                                    <span class="speed-number">{{ plan.speed }}</span>
+                                    <span class="badge-mega">mega</span>
+                                </div>
+
+                                <!-- Bloco de Preço -->
+                                <div class="price-box">
+                                    <div class="price-prefix">
+                                        <span class="apenas">APENAS</span>
+                                        <span class="rs">R$</span>
+                                    </div>
+                                    <div class="price-main">{{ plan.priceReais }}</div>
+                                    <div class="price-suffix">
+                                        <span class="price-cents">,{{ plan.priceCents }}</span>
+                                        <span class="price-period">/mês</span>
+                                    </div>
+                                </div>
+
+                                <!-- Badge Instalação -->
+                                <div>
+                                    <span class="badge-install">
+                                        <i class="bi bi-check-circle-fill"></i> INSTALAÇÃO GRATUITA
+                                    </span>
+                                </div>
+
+                                <!-- Recursos com Ícones -->
+                                <ul class="features-list">
+                                    <li v-for="(feat, fIdx) in plan.features" :key="fIdx">
+                                        <i class="bi bi-plus-circle-fill"></i> {{ feat }}
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Botão Ação -->
+                            <div>
+                                <button class="btn btn-contratar" @click="contratar(plan)">
+                                    <i class="bi bi-whatsapp"></i> CONTRATAR
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Vue.js 2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                whatsappNumber: '5511999999999', // Altere para o seu número com DDD
+                plans: [
+                    {
+                        name: 'MR LIGHT',
+                        speed: '300',
+                        priceReais: '69',
+                        priceCents: '90',
+                        featured: false,
+                        features: ['APP STANDART', 'CANAIS DIGITAIS', '100% FIBRA ÓPTICA']
+                    },
+                    {
+                        name: 'MR MAIS +',
+                        speed: '500',
+                        priceReais: '79',
+                        priceCents: '90',
+                        featured: false,
+                        features: ['APP STANDART', 'CANAIS DIGITAIS', 'WIFI HIGH PERFORMANCE']
+                    },
+                    {
+                        name: 'MR PLUS',
+                        speed: '650',
+                        priceReais: '99',
+                        priceCents: '90',
+                        featured: true, // Adiciona destaque ao plano
+                        features: ['APP PREMIUM', 'CANAIS EXCLUSIVOS', 'ROOTEADOR DUAL BAND']
+                    },
+                    {
+                        name: 'MR ULTRA',
+                        speed: '800',
+                        priceReais: '119',
+                        priceCents: '90',
+                        featured: false,
+                        features: ['APP PREMIUM VIP', 'CANAIS LIBERADOS', 'ULTRABROAD-BAND']
+                    }
+                ]
+            },
+            methods: {
+                contratar(plan) {
+                    const texto = `Olá! Gostaria de contratar o plano *${plan.name}* de *${plan.speed} Mega* por *R$ ${plan.priceReais},${plan.priceCents}/mês*.`;
+                    const mensagemFormatada = encodeURIComponent(texto);
+                    const url = `https://wa.me/${this.whatsappNumber}?text=${mensagemFormatada}`;
+                    window.open(url, '_blank');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
