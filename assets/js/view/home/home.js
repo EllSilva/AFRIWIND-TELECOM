@@ -5,7 +5,7 @@ export default {
     return {
       autoplayTimer: null,
       autoplayInterval: 5000,
-
+ 
       currentSlideIndex: 0,
       slides: [
         {
@@ -50,7 +50,7 @@ export default {
         },
       ],
 
-      whatsappNumber: "5511999999999", // Altere para o seu número com DDD
+      whatsappNumber: "244933741797", // Altere para o seu número com DDD
       plans: [
         {
           name: "PLANO 6",
@@ -207,7 +207,7 @@ export default {
         
       ],
 
-      title: "Porque escolher<br>a Afri wind ?",
+      title: "Porque escolher<br>a Afriwind ?",
       features: [
         {
           icon: "fa-solid fa-gauge-high",
@@ -237,7 +237,7 @@ export default {
 
       mainTitle: "Contrate agora",
       whatsappText: "Chame no WhatsApp",
-      whatsappNumber: "5511999999999",
+      whatsappNumber: "244933741797",
       phoneText: "Ligue agora 244933741797",
       phoneFormatted: "08003663636",
       selfServiceTitle: "Autoatendimento<br>para clientes",

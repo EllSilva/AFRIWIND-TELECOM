@@ -30,7 +30,7 @@ export default {
       },
 
       // Horários de atendimento
-      schedules: ["Segunda a sexta das 8h às 18h", "Sábado das 8h às 12h"],
+      schedules: [" Todos os dias das 8h às 18h"],
     };
   },
 

@@ -2123,7 +2123,7 @@
     .btn-whatsapp-flutuante {
       position: fixed;        /* Fixa o elemento na tela */
       bottom: 20px;           /* Distância do fundo */
-      right: 20px;            /* Distância da direita */
+      right: 30px;            /* Distância da direita */
       z-index: 9999;          /* Garante que fique acima de tudo */
       
       /* Visual e Tamanho */
