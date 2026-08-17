@@ -8,8 +8,7 @@ export default {
 
       menuItems: [
         { label: "Home", link: "#/" },
-        { label: "Serviços", link: "#/servicos" },
-        { label: "Planos", link: "#" },
+        { label: "Serviços", link: "#/servicos" }, 
         { label: "Sobre nós", link: "#/sobre" },
         { label: "Contactos", link: "#/contato" },
       ],

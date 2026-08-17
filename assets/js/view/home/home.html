@@ -22,7 +22,7 @@
               class="card-description"
               v-html="currentSlide.cardDescription"
             ></p>
-            <a :href="currentSlide.linkAdira" class="btn-card-pill">Adira Já</a>
+         
             <a href="#plano" class="btn-card-pill with-arrow">
               <i
                 class="fa-solid fa-chevron-right"
@@ -73,7 +73,7 @@
               <i class="fa-solid fa-wifi"></i>
             </div>
             <p class="feature-text">
-              Instalação sem custos e roteador consignado
+              Instalação rapida e roteador consignado
             </p>
           </div>
         </div>
@@ -225,60 +225,7 @@
     </div>
 
 
-    <div class="container section-container jls-section">
-        
-        <!-- Título e Descrição da Seção -->
-        <div class="row">
-            <div class="col-12">
-                <h2 class="main-title2">Mais diversão para você e sua família! </h2>
-                <p class="main-subtitle2" v-html="subtitle"></p>
-            </div>
-        </div>
-
-        <!-- Bloco Principal de Conteúdo em 2 Colunas -->
-        <div class="row g-4 align-items-stretch">
-            
-            <!-- Coluna 1: Apps planos Standard -->
-            <div class="col-12 col-lg-6">
-                <div class="app-box">
-                    <span class="box-badge">Apps planos Standard</span>
-                    <div class="apps-grid">
-                        <div v-for="(app, index) in standardApps" 
-                             :key="'std-' + index" 
-                             class="app-card"
-                             :class="{ 'bg-white-logo': app.isWhiteBg }"
-                             :style="app.styleObj"
-                             :title="app.name">
-                             
-                            <!-- Se for logo com vetor/imagem direto e fundo branco -->
-                            <img v-if="app.imageUrl" :src="app.imageUrl" :alt="app.name">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Coluna 2: Apps planos Premium -->
-            <div class="col-12 col-lg-6">
-                <div class="app-box">
-                    <span class="box-badge">Apps planos Premium</span>
-                    <div class="apps-grid">
-                        <div v-for="(app, index) in premiumApps" 
-                             :key="'prem-' + index" 
-                             class="app-card"
-                             :class="{ 'bg-white-logo': app.isWhiteBg }"
-                             :style="app.styleObj"
-                             :title="app.name">
-                             
-                            <!-- Se for logo com vetor/imagem direto e fundo branco -->
-                            <img v-if="app.imageUrl" :src="app.imageUrl" :alt="app.name">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
+     
 
 
     <div class="container why-choose-section jls-section">
@@ -361,29 +308,7 @@
                 </div>
             </div>
 
-            <!-- Linha Divisória -->
-            <hr class="middle-hr">
-
-            <!-- Seção 2: Autoatendimento para Clientes -->
-            <div class="row align-items-center">
-                <!-- Texto da Esquerda -->
-                <div class="col-12 col-lg-4 self-service-text-box">
-                    <h3 class="self-service-title" v-html="selfServiceTitle"></h3>
-                    <p class="self-service-subtitle">{{ selfServiceSubtitle }}</p>
-                </div>
-
-                <!-- 4 Botões da Direita -->
-                <div class="col-12 col-lg-8">
-                    <div class="row g-3 justify-content-center">
-                        <div class="col-6 col-sm-3" v-for="(item, index) in selfServiceItems" :key="index">
-                            <a :href="item.link" class="service-card">
-                                <i :class="[item.icon, 'service-icon']"></i>
-                                <span class="service-label" v-html="item.label"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+     
 
         </div>
 

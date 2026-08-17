@@ -2114,3 +2114,75 @@
         }
 
          /* FIM  AREA DE FORMULARIOS*/
+
+
+
+           /* =========================================
+       Estilização do Botão Flutuante
+    ========================================= */
+    .btn-whatsapp-flutuante {
+      position: fixed;        /* Fixa o elemento na tela */
+      bottom: 20px;           /* Distância do fundo */
+      right: 20px;            /* Distância da direita */
+      z-index: 9999;          /* Garante que fique acima de tudo */
+      
+      /* Visual e Tamanho */
+      background-color: #25d366; /* Cor oficial do WhatsApp */
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;     /* Torna o botão um círculo perfeito */
+      width: 60px;            /* Largura fixa */
+      height: 60px;           /* Altura fixa */
+      
+      /* Alinhamento do ícone centralizado */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      /* Estilo da Sombra e Cursor */
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      text-decoration: none;  /* Remove sublinhado se for <a> */
+      
+      /* Transição suave para interação normal (hover) */
+      transition: background-color 0.3s ease, transform 0.3s ease;
+
+      /* =========================================
+         APLICAÇÃO DA ANIMAÇÃO DE PULSO
+         Nome: pulse | Duração: 2s | Loop: Infinito
+      ========================================= */
+      animation: pulse 2s infinite;
+    }
+
+    /* Efeito ao passar o mouse (Hover) */
+    .btn-whatsapp-flutuante:hover {
+      background-color: #128c7e; /* Verde mais escuro no hover */
+      transform: scale(1.1);      /* Aumenta levemente */
+    }
+
+    /* Estilização do ícone SVG dentro do botão */
+    .btn-whatsapp-flutuante svg {
+      width: 35px;  /* Tamanho do ícone */
+      height: 35px;
+      fill: #fff;   /* Cor do ícone (branco) */
+    }
+
+    /* =========================================
+       DEFINIÇÃO DA ANIMAÇÃO DE PULSO (Keyframes)
+       Cria um efeito de "respiração" no tamanho
+    ========================================= */
+    @keyframes pulse {
+      0% {
+        transform: scale(1); /* Tamanho original */
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); /* Sombra invisível */
+      }
+      70% {
+        transform: scale(1.05); /* Aumenta levemente (5%) */
+        /* Cria uma "onda" de sombra verde expandindo */
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); 
+      }
+      100% {
+        transform: scale(1); /* Retorna ao tamanho original */
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); /* Sombra some */
+      }
+    }

@@ -1,144 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secção Benefícios</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botão WhatsApp Flutuante com Pulso</title>
+  <style>
+    /* =========================================
+       Estilização do Botão Flutuante
+    ========================================= */
+    .btn-whatsapp-flutuante {
+      position: fixed;        /* Fixa o elemento na tela */
+      bottom: 20px;           /* Distância do fundo */
+      right: 20px;            /* Distância da direita */
+      z-index: 9999;          /* Garante que fique acima de tudo */
+      
+      /* Visual e Tamanho */
+      background-color: #25d366; /* Cor oficial do WhatsApp */
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;     /* Torna o botão um círculo perfeito */
+      width: 60px;            /* Largura fixa */
+      height: 60px;           /* Altura fixa */
+      
+      /* Alinhamento do ícone centralizado */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      /* Estilo da Sombra e Cursor */
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      text-decoration: none;  /* Remove sublinhado se for <a> */
+      
+      /* Transição suave para interação normal (hover) */
+      transition: background-color 0.3s ease, transform 0.3s ease;
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    <!-- Google Fonts (Montserrat / Open Sans) -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+      /* =========================================
+         APLICAÇÃO DA ANIMAÇÃO DE PULSO
+         Nome: pulse | Duração: 2s | Loop: Infinito
+      ========================================= */
+      animation: pulse 2s infinite;
+    }
 
-    <style>
-        :root {
-            --green-primary: #5cb85c; /* Tom de verde idêntico ao da imagem */
-            --border-color: #dcdcdc;
-            --text-color: #4a4a4a;
-        }
+    /* Efeito ao passar o mouse (Hover) */
+    .btn-whatsapp-flutuante:hover {
+      background-color: #128c7e; /* Verde mais escuro no hover */
+      transform: scale(1.1);      /* Aumenta levemente */
+    }
 
-        body {
-            background-color: #fcfcfc;
-            font-family: 'Montserrat', sans-serif;
-        }
+    /* Estilização do ícone SVG dentro do botão */
+    .btn-whatsapp-flutuante svg {
+      width: 35px;  /* Tamanho do ícone */
+      height: 35px;
+      fill: #fff;   /* Cor do ícone (branco) */
+    }
 
-        .features-section {
-            padding: 40px 0;
-            border-top: 2px solid #8cc63f; /* Linha fina verde no topo igual à da imagem */
-            border-bottom: 2px solid #8cc63f; /* Linha fina verde na base igual à da imagem */
-            background-color: #ffffff;
-        }
-
-        /* CARD DE BENEFÍCIO */
-        .feature-card {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 14px 18px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            height: 100%;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        /* ÍCONES */
-        .feature-icon {
-            color: var(--green-primary);
-            font-size: 1.8rem;
-            flex-shrink: 0; /* Impede o ícone de encolher */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* TEXTO */
-        .feature-text {
-            color: var(--text-color);
-            font-size: 0.78rem;
-            font-weight: 500;
-            line-height: 1.35;
-            margin: 0;
-        }
-
-        /* Ajustes responsivos para telas menores */
-        @media (max-width: 991px) {
-            .feature-card {
-                padding: 12px 15px;
-            }
-            .feature-text {
-                font-size: 0.75rem;
-            }
-        }
-    </style>
+    /* =========================================
+       DEFINIÇÃO DA ANIMAÇÃO DE PULSO (Keyframes)
+       Cria um efeito de "respiração" no tamanho
+    ========================================= */
+    @keyframes pulse {
+      0% {
+        transform: scale(1); /* Tamanho original */
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); /* Sombra invisível */
+      }
+      70% {
+        transform: scale(1.05); /* Aumenta levemente (5%) */
+        /* Cria uma "onda" de sombra verde expandindo */
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); 
+      }
+      100% {
+        transform: scale(1); /* Retorna ao tamanho original */
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); /* Sombra some */
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <section class="features-section">
-        <div class="container">
-            <div class="row g-3 justify-content-center">
-                
-                <!-- CARD 1 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fa-solid fa-wifi"></i>
-                        </div>
-                        <p class="feature-text">
-                            Instalação sem custos e roteador consignado
-                        </p>
-                    </div>
-                </div>
-
-                <!-- CARD 2 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fa-solid fa-headset"></i>
-                        </div>
-                        <p class="feature-text">
-                            Suporte personalizado 24 horas por dia
-                        </p>
-                    </div>
-                </div>
-
-                <!-- CARD 3 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fa-solid fa-network-wired"></i>
-                        </div>
-                        <p class="feature-text">
-                            Conexão rápida 100% fibra ótica
-                        </p>
-                    </div>
-                </div>
-
-                <!-- CARD 4 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <p class="feature-text">
-                            Navegue com rapidez e segurança
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
+  <!-- 
+    Elemento do Botão Flutuante.
+    Substitua o 'href' pelo seu link direto do WhatsApp:
+    https://wa.me/55DDDSEUNUMERO
+  -->
+  <a href="https://wa.me/5500000000000" class="btn-whatsapp-flutuante" target="_blank" rel="noopener noreferrer">
+    <!-- Ícone SVG Oficial do WhatsApp -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27.1 106.1 27.1h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-117zm-157 338.7h-.1c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.7-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.7 23.5 9.2 31.6 11.8 13.3 4.2 25.4 3.6 35 2.2 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
 
 </body>
 </html>

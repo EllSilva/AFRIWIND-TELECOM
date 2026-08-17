@@ -13,7 +13,7 @@ export default {
           cardTitle: "Sempre ",
           cardHighlight: "Online",
           cardDescription:
-            "A internet LTE à medida da sua residência<br>ou empresa",
+            "A internet à medida da sua residência<br>ou empresa",
           linkAdira: "#",
           linkPlanos: "#",
           mainTitlePrefix: "POR TODO",
@@ -31,7 +31,7 @@ export default {
           linkPlanos: "#",
           mainTitlePrefix: "ULTRA",
           mainTitleHighlight: "VELOZ",
-          subtitle: "A melhor fibra óptica e 4G para impulsionar a sua empresa",
+          subtitle: "A melhor fibra óptica  para impulsionar a sua empresa",
           linkTambemQuero: "#",
         },
         {
@@ -45,7 +45,7 @@ export default {
           mainTitlePrefix: "SEM",
           mainTitleHighlight: "LIMITES",
           subtitle:
-            "Desfrute de uma internet LTE rápida, estável e 100% sem limites de dados",
+            "Desfrute de uma internet rápida, estável e 100% sem limites de dados",
           linkTambemQuero: "#",
         },
       ],
