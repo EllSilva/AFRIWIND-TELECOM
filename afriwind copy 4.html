@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider de Clientes e Parceiros - Vue.js 2</title>
+
+  <!-- Vue.js 2 via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    
+
+    .slider-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .slider-title {
+      font-size: 24px;
+      color: #212529;
+      margin-bottom: 8px;
+    }
+
+    .slider-subtitle {
+      font-size: 14px;
+      color: #6c757d;
+      margin-bottom: 35px;
+    }
+
+    /* Container visível do Slider com Mascara de Transição */
+    .slider-wrapper {
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+      /* Sombra suave nas bordas laterais para efeito fade-out */
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    /* Trilho Infinito de Animação */
+    .slider-track {
+      display: inline-flex;
+      align-items: center;
+      gap: 30px;
+      /* Ajuste a duração (20s) conforme a velocidade desejada */
+      animation: scroll 20s linear infinite;
+    }
+
+    /* Pausa a animação quando o usuário passa o mouse por cima */
+    .slider-wrapper:hover .slider-track {
+      animation-play-state: paused;
+    }
+
+    /* Card individual do Logotipo */
+    .logo-item {
+      flex: 0 0 auto;
+      width: 180px;
+      height: 120px;
+      background: #f8f9fa;
+      border: 1px solid #eef0f2;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .logo-item:hover {
+      border-color: #0d6efd;
+      transform: translateY(-2px);
+    }
+
+    .logo-item img {
+      max-width: 120%;
+      max-height: 60px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: filter 0.3s ease, opacity 0.3s ease;
+    }
+
+    .logo-item:hover img {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
+    .logo-item span {
+      font-size: 11px;
+      color: #6c757d;
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    /* Animação CSS Keyframes */
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        /* Desloca exatamente 50% para um loop contínuo e perfeito */
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app" class="slider-container">
+    <h2 class="slider-title">Empresas que Confiam no Nosso Trabalho</h2>
+    <p class="slider-subtitle">Parceiros e clientes que impulsionam a nossa história</p>
+
+    <div class="slider-wrapper">
+      <div class="slider-track">
+        <!-- Renderização Duplicada via Vue para efeito de Loop Infinito Perfeito -->
+        <div class="logo-item" v-for="(parceiro, index) in logosDuplicados" :key="index">
+          <img :src="parceiro.logo" :alt="parceiro.nome">
+          <span>{{ parceiro.nome }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        parceiros: [
+          { nome: 'TechCorp', logo: './assets/images/icon/logo1.jpeg' },
+          { nome: 'CloudServices', logo: './assets/images/icon/logo2.jpeg' },
+          { nome: 'InnovateLab', logo: './assets/images/icon/logo3.jpeg' },
+          { nome: 'DataSecure', logo: './assets/images/icon/logo4.jpeg' },
+          { nome: 'DevStudio', logo: './assets/images/icon/logo5.jpeg' },
+          { nome: 'GlobalTech', logo: './assets/images/icon/logo6.jpeg' }
+        ]
+      },
+      computed: {
+        // Duplica a lista de parceiros dinamicamente no Vue para alimentar a animação do loop CSS
+        logosDuplicados: function() {
+          return [...this.parceiros, ...this.parceiros];
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

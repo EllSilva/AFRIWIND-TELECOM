@@ -265,6 +265,14 @@ export default {
           link: "#",
         },
       ],
+
+         parceiros: [
+          {  logo: './assets/images/icon/logo1.jpeg' },
+          {  logo: './assets/images/icon/logo2.jpeg' },
+          {  logo: './assets/images/icon/logo3.jpeg' },
+          {  logo: './assets/images/icon/logo4.jpeg' },
+          {  logo: './assets/images/icon/logo6.jpeg' }
+        ]
     };
   },
 
@@ -279,6 +287,11 @@ export default {
       );
       return `https://wa.me/${this.whatsappNumber}?text=${text}`;
     },
+
+        // Duplica a lista de parceiros dinamicamente no Vue para alimentar a animação do loop CSS
+        logosDuplicados: function() {
+          return [...this.parceiros, ...this.parceiros];
+        }
   },
 
   mounted() {

@@ -277,6 +277,30 @@
     </div>
 
 
+
+
+
+
+      <div id="app" class="slider-container">
+   
+       <!-- Título da Seção -->
+            <div class="header-box">
+                <h1 class="main-title2 "><span class="text-dark">Empresas que Confiam no</span> Nosso Trabalho</h1>
+                <p class="main-subtitle2 text-dark">Parceiros que impulsionam a nossa história</p>
+            </div>
+
+    <div class="slider-wrapper">
+      <div class="slider-track">
+        <!-- Renderização Duplicada via Vue para efeito de Loop Infinito Perfeito -->
+        <div class="logo-item" v-for="(parceiro, index) in logosDuplicados" :key="index">
+          <img :src="parceiro.logo" >
+          <span>{{ parceiro.nome }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
      <div class="contact-wrapper jls-section">
         <div class="contact-container">
             
