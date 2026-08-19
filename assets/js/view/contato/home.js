@@ -24,13 +24,15 @@ export default {
       // Dados cadastrais da empresa
       company: {
         name: "INFORMAÇÕES DE CONTACTO", 
-        address: "Rua Golf 1, Rua 28 de Agosto ",
+        address: "Bairro Golfe1, Rua 28 de Agosto ",
         cityStateCep: "Luanda, Angola",
-        phone: "244933741797",
+        phone: "+244 933 741 797",
+        email: "geral@afriwind-telecom.com",
+          email2: "comercial@afriwind-telecom.com",
       },
 
       // Horários de atendimento
-      schedules: [" Todos os dias das 8h às 18h"],
+      schedules: [" Todos os dias das 8h às 21h"],
     };
   },
 

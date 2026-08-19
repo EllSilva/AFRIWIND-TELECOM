@@ -18,7 +18,7 @@ export default {
           linkPlanos: "#",
           mainTitlePrefix: "POR TODO",
           mainTitleHighlight: "LADO",
-          subtitle: "Não importa aonde esteja, Internet ? Só aqui",
+          subtitle: "Conectamos onde estamos. Crescemos para chegar mais longe.",
           linkTambemQuero: "#",
         },
         {
@@ -35,7 +35,7 @@ export default {
           linkTambemQuero: "#",
         },
         {
-          bgImage: "./assets/images/slider3.jpg",
+          bgImage: "./assets/images/slider4.jpeg",
           cardTitle: "Conectividade ",
           cardHighlight: "Exclusiva",
           cardDescription:
@@ -58,7 +58,7 @@ export default {
           priceReais: "12",
           priceCents: "000",
           featured: false,
-          features: ["APP STANDART", "CANAIS DIGITAIS", "100% FIBRA ÓPTICA"],
+          features: ["100% FIBRA ÓPTICA", "WIFI HIGH PERFORMANCE"],
         },
         {
           name: "PLANO 8",
@@ -67,8 +67,7 @@ export default {
           priceCents: "000",
           featured: false,
           features: [
-            "APP STANDART",
-            "CANAIS DIGITAIS",
+            "100% FIBRA ÓPTICA",
             "WIFI HIGH PERFORMANCE",
           ],
         },
@@ -78,7 +77,7 @@ export default {
           priceReais: "28",
           priceCents: "000",
           featured: true, // Adiciona destaque ao plano
-          features: ["APP PREMIUM", "CANAIS EXCLUSIVOS", "ROOTEADOR DUAL BAND"],
+          features: ["100% FIBRA ÓPTICA", "WIFI HIGH PERFORMANCE"],
         },
         {
           name: "PLANO 12",
@@ -86,7 +85,7 @@ export default {
           priceReais: "36",
           priceCents: "000",
           featured: false,
-          features: ["APP PREMIUM VIP", "CANAIS LIBERADOS", "ULTRABROAD-BAND"],
+          features: ["100% FIBRA ÓPTICA", "WIFI HIGH PERFORMANCE"],
         },
       ],
 
@@ -333,7 +332,7 @@ export default {
     },
 
     contratar(plan) {
-      const texto = `Olá! Gostaria de contratar o plano *${plan.name}* de *${plan.speed} Mega* por *R$ ${plan.priceReais},${plan.priceCents}/mês*.`;
+      const texto = `Olá! Gostaria de contratar o plano *${plan.name}* de *${plan.speed} Mega* por *KZ ${plan.priceReais},${plan.priceCents}/mês*.`;
       const mensagemFormatada = encodeURIComponent(texto);
       const url = `https://wa.me/${this.whatsappNumber}?text=${mensagemFormatada}`;
       window.open(url, "_blank");
